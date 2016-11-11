@@ -26,19 +26,19 @@ var mongoose = require('mongoose'),
   //   photographer: {type: object.type.objectId, ref: 'Photographer'}
   // });
 
-  var ProfileSchema = new Schema({
-	name: String,
-	githubLink: String,
-	githubProfileImage: String,
-	personalSiteLink: String,
-	currentCity: String,
-	pets: Array
-})
+//   var ProfileSchema = new Schema({
+//   	name: String,
+//   	githubLink: String,
+//   	githubProfileImage: String,
+//   	personalSiteLink: String,
+//   	currentCity: String,
+//   	pets: Array
+//   });
+//
+// var Profile = mongoose.model('Profile', ProfileSchema);
+// module.exports = Profile;
 
-var Profile = mongoose.model('Profile', ProfileSchema);
-module.exports = Profile;
 
 
-
-var Photo = mongoose.model('Photo', PhotoSchema);
-module.exports = Photo;
+// var Photo = mongoose.model('Photo', PhotoSchema);
+// module.exports = Photo;

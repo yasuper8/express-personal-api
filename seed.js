@@ -15,14 +15,14 @@ var db = require('./models');
 // })
 
 
-var new_profile = {
-  name: "Yasuyoshi Sakamoto",
-  githubLink: "https://github.com/yasuper8",
-  githubProfileImage: "https://avatars2.githubusercontent.com/u/18222976?v=3&s=460",
-  personalSiteLink: "https://github.com/yasuper8/yasuper8.github.io",
-  currentCity: "San Francisco, California",
-  pets: [{name: "Moe", type: "Cat"}, {name: "Max", type: "Cat"}]
-}
+// var new_profile = {
+//   name: "Yasuyoshi Sakamoto",
+//   githubLink: "https://github.com/yasuper8",
+//   githubProfileImage: "https://avatars2.githubusercontent.com/u/18222976?v=3&s=460",
+//   personalSiteLink: "https://github.com/yasuper8/yasuper8.github.io",
+//   currentCity: "San Francisco, California",
+//   pets: [{name: "Moe", type: "Cat"}, {name: "Max", type: "Cat"}]
+// }
 
 var photographers_list = [
   {
@@ -65,7 +65,7 @@ db.Photographer.remove({}, function(err, photographers) {
     console.log('Error occurred in remove', err);
   } else {
     console.log('Removed all photographers');
-    db.Photographer.create(photographers-list, function(err, photographers) {
+    db.Photographer.create(photographers_list, function(err, photographers) {
       if (err) { return console.log('err', err); }
       console.log('Created ' + photographers.length + ' photographers');
       process.exit();

@@ -21,10 +21,49 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
-          <h1>Under Construction</h1>
+          <h1>Yasu's Photopgraphers API</h1>
           <h4><a href="/api">Read My API Documentation</a></h4>
+          <form id="personal-api-search">
+            <div class="form-group">
+              <input type="text" id="name" placeholder="Name">
+            </div>
+            <div class="form-group">
+              <input type="text" id="dateOfBirth" placeholder="Date of Birth">
+            </div>
+            <!-- <div class="form-group">
+              <input type="text" id="location" placeholder="Name">
+            </div>
+            <div class="form-group">
+              <input type="text" id="mediumType" placeholder="Name">
+            </div>
+            <div class="form-group">
+              <textarea name="bio" id="bio" rows="10" cols="50">Write something here</textarea>
+            </div> -->
+            <div class="form-group">
+              <input type="submit" class="btn btn-block btn-success" value="Search">
+            </div>
+          </form>
         </div>
       </div>
     </div>
+
+
+
+    <!-- Handlebars Template -->
+    <script id="spotify-li-template" type="text/x-handlebars-template">
+      <div class="row">
+        <div class='col-sx-4'>
+          <img src="{{albumUrl}}" class="img-responsive">
+        </div>
+        <div class="col-xs-8">
+          <p><strong>{{songTitle}}</strong> by {{artistName}}</p>
+          <p><a href="{{previewUrl}}" target="_blank" class="btn btn-sm btn-default">Preview
+    <span class="glyphicon glyphicon-play"></span>
+              </a></p>
+        </div>
+      </div>
+    </script>
+
+
   </body>
 </html>

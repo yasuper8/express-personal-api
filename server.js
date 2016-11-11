@@ -40,14 +40,14 @@ app.get('/', function homepage(req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
-// var new_profile = {
-//   name: "Yasuyoshi Sakamoto",
-//   githubLink: "https://github.com/yasuper8",
-//   githubProfileImage: "https://avatars2.githubusercontent.com/u/18222976?v=3&s=460",
-//   personalSiteLink: "https://github.com/yasuper8/yasuper8.github.io",
-//   currentCity: "San Francisco, California",
-//   pets: [{name: "Moe", type: "Cat"}, {name: "Max", type: "Cat"}]
-// }
+var new_profile = {
+  name: "Yasuyoshi Sakamoto",
+  githubLink: "https://github.com/yasuper8",
+  githubProfileImage: "https://avatars2.githubusercontent.com/u/18222976?v=3&s=460",
+  personalSiteLink: "https://github.com/yasuper8/yasuper8.github.io",
+  currentCity: "San Francisco, California",
+  pets: [{name: "Moe", type: "Cat"}, {name: "Max", type: "Cat"}]
+}
 
 // Get profile info
 app.get('/api/profile', function homepage(req, res) {
@@ -100,11 +100,11 @@ app.put('/api/photographers-list/:id', function(req, res) {
 
 
 // Delete a single photographer in photographers-list
-// app.delete('/api/photographers-list/:id', function(req, res) {
-//   db.Photographer.findOneAndRemove({_id: req.params.id}, function(err, photographer) {
-//     res.json(photographer);
-//   });
-// });
+app.delete('/api/photographers-list/:id', function(req, res) {
+  db.Photographer.findOneAndRemove({_id: req.params.id}, function(err, photographer) {
+    res.json(photographer);
+  });
+});
 
 
 
