@@ -16,6 +16,15 @@ app.use(function(req, res, next) {
   next();
 });
 
+var profile = {
+  name: "Yasuyoshi Sakamoto",
+  githubLink: "https://github.com/yasuper8",
+  githubProfileImage: "https://avatars2.githubusercontent.com/u/18222976?v=3&s=460",
+  personalSiteLink: "https://github.com/yasuper8/yasuper8.github.io",
+  currentCity: "San Francisco, California",
+  pets: [{name: "Moe", type: "Cat"}, {name: "Max", type: "Cat"}]
+}
+
 /************
  * DATABASE *
  ************/
@@ -39,6 +48,14 @@ app.get('/', function homepage(req, res) {
 });
 
 
+//Personal info route
+app.get('/api/profile', function homepage(req, res) {
+  res.json(profile);
+});
+
+
+
+
 /*
  * JSON API Endpoints
  */
@@ -48,7 +65,7 @@ app.get('/api', function api_index(req, res) {
   res.json({
     woopsIForgotToDocumentAllMyEndpoints: true, // CHANGE ME ;)
     message: "Welcome to my personal api! Here's what you need to know!",
-    documentationUrl: "https://github.com/example-username/express_self_api/README.md", // CHANGE ME
+    documentationUrl: "https://github.com/yasuper8/express-personal-api/blob/master/README.md", // CHANGE ME
     baseUrl: "http://rocky-hollows-55860.herokuapp.com", // CHANGE ME
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
@@ -56,7 +73,7 @@ app.get('/api', function api_index(req, res) {
       {method: "GET", path: "/api/photographers/:id", description: "Display one photographer"},
       {method: "GET", path: "/api/photographers", description: "Display all photographers"},
       {method: "POST", path: "/api/campsites", description: "E.g. Create a new campsite"},
-      {method: "POST", path: "/api/campsites", description: "E.g. Create a new campsite"}, // CHANGE ME
+      {method: "DELETE", path: "/api/photographer/:id", description: "Delete a photographer"}, // CHANGE ME
       {method: "POST", path: "/api/photographers", description: "Create a new photographer"}
     ]
   })
