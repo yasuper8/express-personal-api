@@ -57,5 +57,18 @@ var photographers_list = [
     note: "biography is from http://www.edwardburtynsky.com/site_contents/About/aboutBio.html",
     photographerImage: "",
     alive: false
-  },
+  }
 ]
+
+db.Photographer.remove({}, function(err, photographers) {
+  if(err) {
+    console.log('Error occurred in remove', err);
+  } else {
+    console.log('Removed all photographers');
+    db.Photographer.create(photographers-list, function(err, photographers) {
+      if (err) { return console.log('err', err); }
+      console.log('Created ' + photographers.length + ' photographers');
+      process.exit();
+    });
+  }
+});

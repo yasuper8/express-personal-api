@@ -5,7 +5,7 @@ var mongoose = require('mongoose'),
     name: String,
     dateOfBirth: String,
     location: String,
-    favoriteEquipment: String,
+    mediumType: String,
     bio: String,
     styleOfWorks: String,
     note: String,
@@ -13,17 +13,32 @@ var mongoose = require('mongoose'),
     alive: Boolean
   });
 
-  var PhotoSchema = new Schema({
-    title: String,
-    datePublished: String,
-    description: String,
-    fStop: Number,
-    ShutterSpeed: Number,
-    photographer: {type: object.type.objectId, ref: 'Photographer'}
-  });
+  var Photographer = mongoose.model('Photographer', PhotographerSchema);
+  module.exports = Photographer;
 
-  var Photographer = mongoose.model('Photographer', hotographerSchema);
-module.exports = Photographer;
+  //
+  // var PhotoSchema = new Schema({
+  //   title: String,
+  //   datePublished: String,
+  //   description: String,
+  //   fStop: Number,
+  //   ShutterSpeed: Number,
+  //   photographer: {type: object.type.objectId, ref: 'Photographer'}
+  // });
+
+  var ProfileSchema = new Schema({
+	name: String,
+	githubLink: String,
+	githubProfileImage: String,
+	personalSiteLink: String,
+	currentCity: String,
+	pets: Array
+})
+
+var Profile = mongoose.model('Profile', ProfileSchema);
+module.exports = Profile;
+
 
 
 var Photo = mongoose.model('Photo', PhotoSchema);
+module.exports = Photo;
