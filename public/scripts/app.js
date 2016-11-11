@@ -4,6 +4,8 @@ $(document).ready(function(){
 
 // your code
 
+
+
 //Search form
 var $photographersSearch = $("#photographer-search");
 
@@ -14,14 +16,49 @@ var $result = $("#result");
 // loading gif
 var $loading = $('#loading');
 
+var $myProfile = $("#profileTarget");
 
 
+// compile handlebars template
+var source = $('#profile-template').html();
+template = Handlebars.compile(source);
+
+$.ajax({
+    method: 'GET',
+    url: '/api/profile',
+    success: handleSuccess,
+    error: handleError
+  });
 
 
+  // helper function to render all posts to view
+// note: we empty and re-render the collection each time our post data changes
+function render () {
+  // empty existing posts from view
+  $myProfile.empty();
 
+  // pass `allBooks` into the template function
+  var myProfileHtml = template({ name: myProfile.name,
+                                 githubLink: myProfile.githubLink,
+                                 githubProfileImage: myProfile.githubProfileImage,
+                                 personalSiteLink: myProfile.personalSiteLink,
+                                 currentCity: myProfile.currentCity,
+                                 pets: myProfile.pets
+                               });
 
+  // append html to the view
+  $myProfile.append(myProfileHtml);
+}
 
+  function handleSuccess(json) {
+    myProfile = json;
+    render();
+  }
 
+  function handleError(e) {
+  console.log('uh oh');
+  $('#profileTarget').text('Failed to load my profile, is the server working?');
+}
 
 
 
@@ -38,6 +75,7 @@ $photographersSearch.on('submit', function(event) {
       $.ajax({
         method: 'GET',
         url: "api/photographers-list/:name",
+        data: searchName.serialize(),
         success: handlePhotographersData // see this function defined below
       });
     } else {

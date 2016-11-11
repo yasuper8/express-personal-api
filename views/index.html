@@ -25,6 +25,30 @@
       <div class="col-md-8 col-md-offset-2">
         <h1>Yasu's Photopgraphers API</h1>
         <h4><a href="/api">Read My API Documentation</a></h4>
+        <div id="profileTarget">
+
+          <!-- Handlebars template for my profile -->
+            <script id="profile-template" type="text/x-handlebars-template">
+              <div class="row">
+                <div class='col-sx-4'>
+                  <img src="{{profileImageUrl}}" class="img-responsive">
+                </div>
+                <div class="col-xs-8">
+                  <p><strong>{{name}}</strong></p>
+                  <!-- <p><a href="{{previewUrl}}" target="_blank" class="btn btn-sm btn-default">Preview
+            <span class="glyphicon glyphicon-play"></span>
+                      </a></p> -->
+                  <a href="{{githubLink}}"><strong>Yasu's Github</strong></a>
+                  <img id="yasu-headshot" src="{{githubProfileImage}}" alt="">
+                  <a href="{{personalSiteLink}}"><strong>Yasu's Portfolios</strong></a>
+                  <p><strong>Location: {{currentCity}}</strong></p>
+                  <p><strong>{{pets}}</strong></p>
+
+                </div>
+              </div>
+            </script>
+
+        </div>
         <form id="photographer-search">
           <div class="form-group">
             <input type="text" name="name" id="name" placeholder="Name">
@@ -52,58 +76,33 @@
         <br>
         <div id="results">
 
+          <!-- Handlebars Template -->
+          <script id="photographers-template" type="text/x-handlebars-template">
+            <div class="row">
+              <div class='col-sx-4'>
+                <img src="{{photographerImageUrl}}" class="img-responsive">
+              </div>
+              <div class="col-xs-8">
+                <p><strong>{{name}}</strong></p>
+                <!-- <p><a href="{{previewUrl}}" target="_blank" class="btn btn-sm btn-default">Preview
+          <span class="glyphicon glyphicon-play"></span>
+                    </a></p> -->
+                <p><strong>{{dateOfBirth}}</strong></p>
+                <p><strong>{{location}}</strong></p>
+                <p><strong>{{mediumType}}</strong></p>
+                <p><strong>{{bio}}</strong></p>
+                <p><strong>{{styleOfWorks}}</strong></p>
+                <p><strong>{{note}}</strong></p>
+                <p><strong>{{alive}}</strong></p>
+              </div>
+            </div>
+          </script>
+
         </div>
 
       </div>
     </div>
   </div>
-
-
-
-  <!-- Handlebars Template -->
-  <script id="photographers-template" type="text/x-handlebars-template">
-    <div class="row">
-      <div class='col-sx-4'>
-        <img src="{{photographerImageUrl}}" class="img-responsive">
-      </div>
-      <div class="col-xs-8">
-        <p><strong>{{name}}</strong></p>
-        <!-- <p><a href="{{previewUrl}}" target="_blank" class="btn btn-sm btn-default">Preview
-  <span class="glyphicon glyphicon-play"></span>
-            </a></p> -->
-        <p><strong>{{dateOfBirth}}</strong></p>
-        <p><strong>{{location}}</strong></p>
-        <p><strong>{{mediumType}}</strong></p>
-        <p><strong>{{bio}}</strong></p>
-        <p><strong>{{styleOfWorks}}</strong></p>
-        <p><strong>{{note}}</strong></p>
-        <p><strong>{{alive}}</strong></p>
-
-      </div>
-    </div>
-  </script>
-
-<!-- Handlebars template for my profile -->
-  <script id="profile-template" type="text/x-handlebars-template">
-    <div class="row">
-      <div class='col-sx-4'>
-        <img src="{{profileImageUrl}}" class="img-responsive">
-      </div>
-      <div class="col-xs-8">
-        <p><strong>{{name}}</strong></p>
-        <!-- <p><a href="{{previewUrl}}" target="_blank" class="btn btn-sm btn-default">Preview
-  <span class="glyphicon glyphicon-play"></span>
-            </a></p> -->
-        <p><strong>{{githubLink}}</strong></p>
-        <p><strong>{{githubProfileImage}}</strong></p>
-        <p><strong>{{personalSiteLink}}</strong></p>
-        <p><strong>{{currentCity}}</strong></p>
-        <p><strong>{{pets}}</strong></p>
-
-      </div>
-    </div>
-  </script>
-
 
 </body>
 
