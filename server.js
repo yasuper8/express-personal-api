@@ -16,20 +16,13 @@ app.use(function(req, res, next) {
   next();
 });
 
-var profile = {
-  name: "Yasuyoshi Sakamoto",
-  githubLink: "https://github.com/yasuper8",
-  githubProfileImage: "https://avatars2.githubusercontent.com/u/18222976?v=3&s=460",
-  personalSiteLink: "https://github.com/yasuper8/yasuper8.github.io",
-  currentCity: "San Francisco, California",
-  pets: [{name: "Moe", type: "Cat"}, {name: "Max", type: "Cat"}]
-}
+
 
 /************
  * DATABASE *
  ************/
 
-// var db = require('./models');
+var db = require('./models');
 
 /**********
  * ROUTES *
@@ -48,7 +41,7 @@ app.get('/', function homepage(req, res) {
 });
 
 
-//Personal info route
+// Get profile info
 app.get('/api/profile', function homepage(req, res) {
   res.json(profile);
 });
@@ -69,12 +62,12 @@ app.get('/api', function api_index(req, res) {
     baseUrl: "http://rocky-hollows-55860.herokuapp.com", // CHANGE ME
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
-      {method: "GET", path: "/api/profile", description: "Data about me"}, // CHANGE ME
-      {method: "GET", path: "/api/photographers/:id", description: "Display one photographer"},
-      {method: "GET", path: "/api/photographers", description: "Display all photographers"},
-      {method: "POST", path: "/api/campsites", description: "E.g. Create a new campsite"},
-      {method: "DELETE", path: "/api/photographer/:id", description: "Delete a photographer"}, // CHANGE ME
-      {method: "POST", path: "/api/photographers", description: "Create a new photographer"}
+      {method: "GET", path: "/api/profile", description: "Display data about me"}, // CHANGE ME
+      {method: "GET", path: "/api/photographers-list/:id", description: "Display a single photographer in photographers-list"},
+      {method: "GET", path: "/api/photographers-list", description: "Display all the photographers in photographers-list"},
+      {method: "POST", path: "/api/photographers-list", description: "Create a new photographer in photographers-list"},
+      {method: "PUT", path: "/api/photographers-list/:id", description: "Update a single photographer in photographers-list"}
+      {method: "DELETE", path: "/api/photographer-list/:id", description: "Delete a single photographer in photographers-list"}, // CHANGE ME
     ]
   })
 });

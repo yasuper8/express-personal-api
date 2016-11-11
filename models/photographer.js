@@ -8,6 +8,8 @@ var mongoose = require('mongoose'),
     favoriteEquipment: String,
     bio: String,
     styleOfWorks: String,
+    note: String,
+    photographerImage: String,
     alive: Boolean
   });
 
