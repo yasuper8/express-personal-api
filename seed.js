@@ -32,7 +32,7 @@ var photographers_list = [
     mediumType: "large format film",
     bio: "Ansel Adams, photographer and environmentalist, was born in San Francisco, California, the son of Charles Hitchcock Adams, a businessman, and Olive Bray. The grandson of a wealthy timber baron, Adams grew up in a house set amid the sand dunes of the Golden Gate.",
     styleOfWorks: "Natural Light Photography",
-    note: "bio is from http://anseladams.com/about-ansel-adams/ansel-adams-biography/",
+    note: "http://anseladams.com/about-ansel-adams/ansel-adams-biography/",
     photographerImage: "",
     alive: false
   },
@@ -43,7 +43,7 @@ var photographers_list = [
     mediumType: "large format film",
     bio: "Linda Connor has lead a creative life devoted to photography. With her large format camera, she has traveled in Africa, Southeast Asia, Nepal, India, Turkey, Mexico, Tibet, the American Southwest, and Europe exploring sites that evoke mystery and spirit. She is known for her luminous and iconic photographs and fascination with culturally sacred sites and landscapes.",
     styleOfWorks: "Sacred Photography",
-    note: "bio is from http://www.josephbellows.com/artists/linda-connor/bio/",
+    note: "http://www.josephbellows.com/artists/linda-connor/bio/",
     photographerImage: "",
     alive: true
   },
@@ -54,9 +54,9 @@ var photographers_list = [
     favoriteEquipment: "large format film",
     bio: "Edward Burtynsky is known as one of Canada's most respected photographers. His remarkable photographic depictions of global industrial landscapes are included in the collections of over sixty major museums around the world, including the National Gallery of Canada, the Museum of Modern Art, the Guggenheim Museum in New York, the Reina Sofia Museum in Madrid, and the Los Angeles County Museum of Art in California.",
     styleOfWorks: "Natural Light Photography",
-    note: "biography is from http://www.edwardburtynsky.com/site_contents/About/aboutBio.html",
+    note: "http://www.edwardburtynsky.com/site_contents/About/aboutBio.html",
     photographerImage: "",
-    alive: false
+    alive: true
   }
 ]
 

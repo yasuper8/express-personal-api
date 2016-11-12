@@ -4,11 +4,15 @@ body {
   background-color: skyblue; /* Sanity Check! */
 }
 
-h1 {
+h1 h2 {
   margin-top: 100px;
   text-align: center;
 }
 
 #yasu-headshot {
   width: 300px;
+  border-radius: 30px;
+  display: block;
+  margin: 0 auto;
+
 }

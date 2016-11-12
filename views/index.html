@@ -23,7 +23,8 @@
   <div class="container">
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
-        <h1>Yasu's Photopgraphers API</h1>
+        <h1>Yasu's Pick</h1>
+        <h2>Photographs and Photopgraphers</h2>
         <h4><a href="/api">Read My API Documentation</a></h4>
         <div id="profileTarget">
 
@@ -49,13 +50,13 @@
             </script>
 
         </div>
-        <form id="photographer-search">
+        <!-- <form id="photographer-search">
           <div class="form-group">
             <input type="text" name="name" id="name" placeholder="Name">
           </div>
           <div class="form-group">
             <input type="text" id="dateOfBirth" placeholder="Date of Birth">
-          </div>
+          </div> -->
           <!-- <div class="form-group">
               <input type="text" id="location" placeholder="Name">
             </div>
@@ -65,35 +66,59 @@
             <div class="form-group">
               <textarea name="bio" id="bio" rows="10" cols="50">Write something here</textarea>
             </div> -->
-          <div class="form-group">
+          <!-- <div class="form-group">
             <input type="submit" class="btn btn-block btn-success" value="Search">
           </div>
-        </form>
+        </form> -->
         <!-- <div class="text-center" id="loading">
           <img src="../public/images/loading.gif">
         </div> -->
+
+        <hr>
+        <form method="POST" action="/api/photographers-list" id="newPhotographer">
+            <div class="container">
+             <h2>Add a photographer data to this photographer list!</h2>
+                <div class="row form">
+                    <label for="photographer-name">Name : <input class="reset" name="name" type="text" placeholder="Photographer's Name"  required></label>
+                    <label for="photographer-birth-day">Date of Birth : <input class="reset" name="dateOfBirth" type="text" placeholder="Date of Birth" ></label>
+                    <label for="photographer-location">Location : <input class="reset" name="location" type="text" placeholder="Location" ></label>
+                    <label for="medium-type">Medium Type : <input class="reset" name="mediumType" type="text" placeholder="Medium Type"  required></label>
+                    <label for="photographer-bio">Biography : <textarea name="biography" type="text" placeholder="Biography" title="Enter Biography Link Here" rows="8" cols="40" required></textarea></label>
+                    <label for="photographer-style">Photographer's Style : <input class="reset" name="styleOfWorks" type="text" placeholder="Style of Works"  ></label>
+                    <label for="note-citations">Note, Citations and Related Links : <input class="reset" name="note" type="text" placeholder="Citation Notes and links" ></label>
+                    <label for="alive-true">Alive :  <input type="radio" name="optradio">  True  <input type="radio" name="optradio">  False  </label>
+                    <input class="btn btn-default submitBtn" type="submit"></input>
+                </div>
+            </div>
+        </form>
+
+        <hr>
+
+
 
         <br>
         <div id="results">
 
           <!-- Handlebars Template -->
           <script id="photographers-template" type="text/x-handlebars-template">
-            <div class="row">
+            <div class="row" id="photographers-list">
               <div class='col-sx-4'>
                 <img src="{{photographerImageUrl}}" class="img-responsive">
               </div>
               <div class="col-xs-8">
-                <p><strong>{{name}}</strong></p>
+                <p>Name: <strong>{{name}}</strong></p>
                 <!-- <p><a href="{{previewUrl}}" target="_blank" class="btn btn-sm btn-default">Preview
           <span class="glyphicon glyphicon-play"></span>
                     </a></p> -->
-                <p><strong>{{dateOfBirth}}</strong></p>
-                <p><strong>{{location}}</strong></p>
-                <p><strong>{{mediumType}}</strong></p>
-                <p><strong>{{bio}}</strong></p>
-                <p><strong>{{styleOfWorks}}</strong></p>
-                <p><strong>{{note}}</strong></p>
-                <p><strong>{{alive}}</strong></p>
+                <p>DOB: <strong>{{dateOfBirth}}</strong></p>
+                <p>Location: <strong>{{location}}</strong></p>
+                <p>Medium Type: <strong>{{mediumType}}</strong></p>
+                <p>Biography: <strong>{{bio}}</strong></p>
+                <p>Note: The biography is from <a href="{{note}}">this link!</a></p>
+                <p>Style of Work:  <strong>{{styleOfWorks}}</strong></p>
+                <p>Living: <strong>{{alive}}</strong></p>
+                <button type="button" class="btn btn-default deleteBtn" data-id={{_id}}>Delete</button>
+                <hr>
               </div>
             </div>
           </script>
