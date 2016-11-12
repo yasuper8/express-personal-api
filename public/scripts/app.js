@@ -105,6 +105,7 @@ $(document).ready(function(){
 
   }
 
+
     function handleSuccessAllPhotographers(json) {
       photographersList = json;
       renderPhotographers();
@@ -135,6 +136,7 @@ $(document).ready(function(){
 
   function postSuccess(json) {
       $('.reset').val('');
+      $results.empty();
       photographersList.push(json);
       renderPhotographers();
   }
