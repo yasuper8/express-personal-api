@@ -2,6 +2,7 @@ var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
   var PhotographerSchema = new Schema({
+    profileImageUrl: String,
     name: String,
     dateOfBirth: String,
     location: String,
@@ -26,17 +27,6 @@ var mongoose = require('mongoose'),
   //   photographer: {type: object.type.objectId, ref: 'Photographer'}
   // });
 
-//   var ProfileSchema = new Schema({
-//   	name: String,
-//   	githubLink: String,
-//   	githubProfileImage: String,
-//   	personalSiteLink: String,
-//   	currentCity: String,
-//   	pets: Array
-//   });
-//
-// var Profile = mongoose.model('Profile', ProfileSchema);
-// module.exports = Profile;
 
 
 

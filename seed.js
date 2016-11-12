@@ -15,17 +15,18 @@ var db = require('./models');
 // })
 
 
-// var new_profile = {
-//   name: "Yasuyoshi Sakamoto",
-//   githubLink: "https://github.com/yasuper8",
-//   githubProfileImage: "https://avatars2.githubusercontent.com/u/18222976?v=3&s=460",
-//   personalSiteLink: "https://github.com/yasuper8/yasuper8.github.io",
-//   currentCity: "San Francisco, California",
-//   pets: [{name: "Moe", type: "Cat"}, {name: "Max", type: "Cat"}]
-// }
+var new_profile = {
+  name: "Yasuyoshi Sakamoto",
+  githubLink: "https://github.com/yasuper8",
+  githubProfileImage: "https://avatars2.githubusercontent.com/u/18222976?v=3&s=460",
+  personalSiteLink: "https://github.com/yasuper8/yasuper8.github.io",
+  currentCity: "San Francisco, California",
+  pets: [{name: "Moe", type: "Cat"}, {name: "Max", type: "Cat"}]
+}
 
 var photographers_list = [
   {
+    profileImageUrl: "https://upload.wikimedia.org/wikipedia/commons/0/05/Ansel_Adams_and_camera.jpg",
     name: "Ansel Adams",
     dateOfBirth: "February 20, 1902",
     location: "San Francisco",
@@ -37,6 +38,7 @@ var photographers_list = [
     alive: false
   },
   {
+    profileImageUrl: "http://www.conversations.org/pics/story/449/large.jpg",
     name: "Linda Connor",
     dateOfBirth: "November 18, 1944",
     location: "San Francisco",
@@ -48,6 +50,7 @@ var photographers_list = [
     alive: true
   },
   {
+    profileImageUrl: "http://speakers.ok.ubc.ca/__shared/assets/burtynsky-20047935.jpg",
     name: "Edward Burtynsky",
     dateOfBirth: "1955",
     location: "St. Catharines, Ontario",
@@ -101,7 +104,18 @@ var photographers_list = [
 // ]
 
 
-
+db.Profile.remove({}, function(err, myProfile) {
+  if(err) {
+    console.log('Error occurred in remove', err);
+  } else {
+    console.log('Removed my profile');
+    db.Profile.create(new_profile, function(err, myProfile) {
+      if (err) { return console.log('err', err); }
+      console.log('Created ' + profile.length + ' profile');
+      process.exit();
+    });
+  }
+});
 
 db.Photographer.remove({}, function(err, photographers) {
   if(err) {

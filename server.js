@@ -82,6 +82,7 @@ app.post('/api/photographers-list', function(req, res) {
 //Update a single photographer in photographers-list
 app.put('/api/photographers-list/:id', function(req, res) {
   db.Photographer.findOne({_id: req.params.id}, function(err, photographer) {
+    photographer.profileImageUrl = req.body.profileImageUrl;
     photographer.name = req.body.name;
     photographer.dateOfBirth = req.body.dateOfBirth;
     photographer.location = req.body.location;
@@ -91,9 +92,10 @@ app.put('/api/photographers-list/:id', function(req, res) {
     photographer.note = req.body.note;
     photographer.photographerImage = req.body.photographerImage;
     photographer.alive = req.body.alive;
-    photographer.save(function(err, newPhotographer) {
-    res.json(newPhotographer);
-    });
+
+  });
+  photographer.save(function(err, newPhotographer) {
+  res.json(newPhotographer);
   });
 });
 

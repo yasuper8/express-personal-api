@@ -40,8 +40,7 @@
                   <img id="yasu-headshot" src="{{githubProfileImage}}" alt="">
                   <a href="{{personalSiteLink}}"><strong>Yasu's Portfolios</strong></a>
                   <p><strong>Location: {{currentCity}}</strong></p>
-                  <p><strong>{{pets}}</strong></p>
-
+                  <p><strong>My pets: {{#each pets}} Name: {{name}} Type: {{type}} // {{/each}}</strong></p>
                 </div>
               </div>
             </script>
@@ -76,15 +75,16 @@
             <div class="container">
              <h2><strong>Add a photographer data to this list!</strong></h2>
                 <div class="row form">
-                    <label for="photographer-name">Name : <input class="reset" name="name" type="text" placeholder="Photographer's Name"  required></label>
-                    <label for="photographer-birth-day">Date of Birth : <input class="reset" name="dateOfBirth" type="text" placeholder="Date of Birth" ></label>
-                    <label for="photographer-location">Location : <input class="reset" name="location" type="text" placeholder="Location" ></label>
-                    <label for="medium-type">Medium Type : <input class="reset" name="mediumType" type="text" placeholder="Medium Type"  required></label>
-                    <label for="photographer-bio">Biography : <textarea class="reset" name="bio" type="text" placeholder="Biography" title="Enter Biography Link Here" rows="5" cols="45" required></textarea></label>
-                    <label for="photographer-style">Photographer's Style : <input class="reset" name="styleOfWorks" type="text" placeholder="Style of Works"  ></label>
-                    <label for="note-citations">A Related Link : <input class="reset" name="note" type="text" placeholder="Citation Notes and links" ></label>
-                    <label for="alive-true">Alive :  <input type="radio" name="optradio">  True  <input type="radio" name="optradio">  False  </label>
-                    <input class="btn btn-default submitBtn" type="submit"></input>
+                  <label for="photographer-profilePhoto">Profile image URL : <input class="reset" name="name" type="text" placeholder="Profile photo URL"></label>
+                  <label for="photographer-name">Name : <input class="reset" name="name" type="text" placeholder="Photographer's Name"  required></label>
+                  <label for="photographer-birth-day">Date of Birth : <input class="reset" name="dateOfBirth" type="text" placeholder="Date of Birth" ></label>
+                  <label for="photographer-location">Location : <input class="reset" name="location" type="text" placeholder="Location" ></label>
+                  <label for="medium-type">Medium Type : <input class="reset" name="mediumType" type="text" placeholder="Medium Type"  required></label>
+                  <label for="photographer-bio">Biography : <textarea class="reset" name="bio" type="text" placeholder="Biography" title="Enter Biography Link Here" rows="5" cols="45" required></textarea></label>
+                  <label for="photographer-style">Photographer's Style : <input class="reset" name="styleOfWorks" type="text" placeholder="Style of Works"  ></label>
+                  <label for="note-citations">A Related Link : <input class="reset" name="note" type="text" placeholder="Citation Notes and links" ></label>
+                  <label for="alive-true">Alive :  <input type="radio" name="optradio">  True  <input type="radio" name="optradio">  False  </label>
+                  <input class="btn btn-default submitBtn" type="submit"></input>
                 </div>
             </div>
         </form>
@@ -100,9 +100,9 @@
           <script id="photographers-template" type="text/x-handlebars-template">
             <div class="row" id="photographers-list">
               <div class='col-sx-4'>
-                <img src="{{photographerImageUrl}}" class="img-responsive">
               </div>
               <div class="col-xs-8">
+                <img src="{{profileImageUrl}}" class="profilePhoto img-responsive">
                 <p>Name: <strong>{{name}}</strong></p>
                 <!-- <p><a href="{{previewUrl}}" target="_blank" class="btn btn-sm btn-default">Preview
           <span class="glyphicon glyphicon-play"></span>
@@ -120,6 +120,7 @@
                      <h3><strong>Update A Photographer Data Above</strong></h3>
                         <div class="row form">
                             <label for="photographer-name">Name : <input class="reset" name="name" type="text" placeholder="Photographer's Name"></label>
+                            <label for="photographer-profilePhoto">Profile image URL : <input class="reset" name="name" type="text" placeholder="Profile photo URL"></label>
                             <label for="photographer-birth-day">Date of Birth : <input class="reset" name="dateOfBirth" type="text" placeholder="Date of Birth" ></label>
                             <label for="photographer-location">Location : <input class="reset" name="location" type="text" placeholder="Location" ></label>
                             <label for="medium-type">Medium Type : <input class="reset" name="mediumType" type="text" placeholder="Medium Type"></label>
