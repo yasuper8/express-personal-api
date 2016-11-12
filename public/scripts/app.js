@@ -3,19 +3,26 @@ console.log("Sanity Check: JS is working!");
 $(document).ready(function(){
 
   //Search form
-  var $photographersSearch = $("#photographer-search");
+  var $photographersSearch = $('#photographer-search');
 
-  var $name = $("#name");
+  var $name = $('#name');
 
-  var $results = $("#results");
+  var $results = $('#results');
 
   //Photograpers list
-  var $photographersList = $("#photographers-list");
+  var $photographersList = $('#photographers-list');
   // loading gif
   var $loading = $('#loading');
 
-  var $myProfile = $("#profileTarget");
+  var $myProfile = $('#profileTarget');
 
+  //form to add a new photographer data
+  var $newPhotographer = $('#newPhotographer');
+
+
+/////////////////////////
+/////GET my profile/////
+///////////////////////
 
   // compile handlebars template for my profile
   var source = $('#profile-template').html();
@@ -27,7 +34,6 @@ $(document).ready(function(){
       success: handleSuccessProfile,
       error: handleError
   });
-
 
   // helper function to render all posts to view
   // note: we empty and re-render the collection each time our post data changes
@@ -62,9 +68,9 @@ $(document).ready(function(){
   }
   //end my profile
 
-////////////////////////////////////////
-///////////GET All//////////////
-////////////////////////
+//////////////////////////
+///////////GET All////////
+/////////////////////////
 
   // compile handlebars template for photgraphers
   var photographersSource = $('#photographers-template').html();
@@ -104,9 +110,9 @@ $(document).ready(function(){
       renderPhotographers();
     }
 
-    function handleError(e) {
-      console.log('uh oh');
-      $('#results').text('Failed to load photographers in photographers-list, is the server working?');
+    function handleError(error) {
+      console.log('uh oh Error ' + error);
+      $('#results').text('Failed to load photographers in photographers-list, is the server working?' + error);
     }
 
 
@@ -115,16 +121,32 @@ $(document).ready(function(){
 //////POST Create one/////
 ////////////////////////
 
+  $newPhotographer.on('submit', function(event) {
+    event.preventDefault();
+    $.ajax({
+      method: 'POST',
+      url: '/api/photographers-list',
+      data: $(this).serialize(),
+      success: postSuccess,
+      error: handleErrorPost
+    });
+  })
 
 
+  function postSuccess(json) {
+      $('.reset').val('');
+      photographersList.push(json);
+      renderPhotographers();
+  }
 
+  function handleErrorPost(error) {
+    console.log('uh oh Post Error ' + error);
+    $('#results').text('Failed to Post a new photographers in photographers-list, is the server working?' + error);
+  }
 
-
-
-
-///////////////////////////////
+///////////////////////
 ///////DELETE/////////
-/////////////////////////
+////////////////////
 
   // $photographersList.on('click','.delateBtn', function(event) {
   //   event.preventDeafult();
