@@ -60,6 +60,49 @@ var photographers_list = [
   }
 ]
 
+
+// var PhotoSchema = new Schema({
+//   title: String,
+//   datePublished: String,
+//   description: String,
+//   fStop: Number,
+//   shutterSpeed: Number,
+//   photographer: {type: object.type.objectId, ref: 'Photographer'}
+// });
+
+// var photos_list = [
+//   {
+//     title: "aaaa",
+//     datePublished: " 11/11/11",
+//     description: "ajsjsjsj",
+//     fStop: 8,
+//     shutterSpeed: 1/60,
+//     photographer: {type: }
+//
+//   },
+//   {
+//     title: "aaaa",
+//     datePublished: " 11/11/11",
+//     description: "ajsjsjsj",
+//     fStop: 8,
+//     shutterSpeed: 1/60,
+//     photographer: {type: }
+//
+//   },
+//   {
+//     title: "aaaa",
+//     datePublished: " 11/11/11",
+//     description: "ajsjsjsj",
+//     fStop: 8,
+//     shutterSpeed: 1/60,
+//     photographer: {type: }
+//
+//   }
+// ]
+
+
+
+
 db.Photographer.remove({}, function(err, photographers) {
   if(err) {
     console.log('Error occurred in remove', err);

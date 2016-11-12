@@ -6,7 +6,7 @@ $(document).ready(function(){
   var $photographersSearch = $('#photographer-search');
 
   var $name = $('#name');
-
+  //search results will be append to here
   var $results = $('#results');
 
   //Photograpers list
@@ -18,6 +18,9 @@ $(document).ready(function(){
 
   //form to add a new photographer data
   var $newPhotographer = $('#newPhotographer');
+
+  //form for updaate
+  var $updatePhotographer = $('#updatePhotographer');
 
 
 /////////////////////////
@@ -85,6 +88,7 @@ $(document).ready(function(){
   });
 
   function renderPhotographers() {
+    $results.empty();
     for(var i = 0; i < photographersList.length; i++) {
       var photographersInfo = {
         name: photographersList[i].name,
@@ -117,7 +121,6 @@ $(document).ready(function(){
     }
 
 
-
 //////////////////////////////
 //////POST Create one/////
 ////////////////////////
@@ -146,43 +149,99 @@ $(document).ready(function(){
     $('#results').text('Failed to Post a new photographers in photographers-list, is the server working?' + error);
   }
 
+
+/////////////////////////
+//////POST Update////////
+/////////////////////////
+
+
+$results.on('click', '.updateBtn', function(event) {
+  event.preventDefault();
+  console.log("updateBtn clicked!");
+
+  $.ajax({
+    method: 'PUT',
+    url: "api/photographers-list/" + $(this).attr('data-id'),
+    success: handleUpdateAPhotographer,
+    error: handleUpdateError
+  });
+
+});
+
+function handleUpdateAPhotographer(json) {
+  var deleteThisPhotographer = json;
+  var photographerId = deleteThisPhotographer._id;
+  console.log("reponse fiom update",json);
+
+  // for (var i = 0; i < photographersList.length; i++) {
+  //   if (photographersList[i]._id === photographerId) {
+  //     var newPhotographersInfo = {
+  //       name: photographersList[i].name,
+  //       dateOfBirth: photographersList[i].dateOfBirth,
+  //       location: photographersList[i].location,
+  //       mediumType: photographersList[i].mediumType,
+  //       bio: photographersList[i].bio,
+  //       styleOfWorks: photographersList[i].styleOfWorks,
+  //       note: photographersList[i].note,
+  //       alive: photographersList[i].alive,
+  //       _id: photographersList[i]._id
+  //     }
+  //     var newPhotographersHtml = templatePhotographers(newPhotographersInfo);
+
+      // append html to the view
+      $results.append(newPhotographersHtml);
+
+      renderPhotographers();
+
+    }
+  }
+}
+
+function handleUpdateError(e) {
+  console.log('uh oh');
+  $('#results').text('Failed to update a photographer from photographers-list, is the server working?');
+}
+
+
+
 ///////////////////////
 ///////DELETE/////////
 ////////////////////
 
-  // $photographersList.on('click','.delateBtn', function(event) {
-  //   event.preventDeafult();
-  //   console.log("deleteBtn clicked!");
-  //
-  //   $.ajax({
-  //     method: 'DELETE',
-  //     url: "api/photographers-list/" + $(this).attr('data-id'),
-  //     success: handleDeleteAPhotographer,
-  //     error: handleError
-  //   });
-  //
-  // });
-  //
-  //
-  // function handleDeleteAPhotographer(json) {
-  //   var deleteThisPhotographer = json;
-  //   var photographerId = deleteThisPhotographer._id;
-  //
-  //   for (var i = 0; i < photographersList.length; i++) {
-  //     if (photographersList[i]._id === photographerId) {
-  //       photographersList.splice(i, 1);
-  //     }
-  //   }
-  //   renderPhotographers();
-  // }
-  //
-  //
-  //
-  // function handleError(e) {
-  //   console.log('uh oh');
-  //   $('#results').text('Failed to delete a photographer from photographers-list, is the server working?');
-  // }
-  //
+  $results.on('click', '.deleteBtn', function(event) {
+    event.preventDefault();
+    console.log("deleteBtn clicked!");
+
+    $.ajax({
+      method: 'DELETE',
+      url: "api/photographers-list/" + $(this).attr('data-id'),
+      success: handleDeleteAPhotographer,
+      error: handleDeleteError
+    });
+
+  });
+
+
+  function handleDeleteAPhotographer(json) {
+    var deleteThisPhotographer = json;
+    var photographerId = deleteThisPhotographer._id;
+
+    for (var i = 0; i < photographersList.length; i++) {
+      if (photographersList[i]._id === photographerId) {
+        photographersList.splice(i, 1);
+        renderPhotographers();
+        break;  // No reason to keep searching after find a photographer (this is why didn't use forEach)
+      }
+    }
+
+  }
+
+
+  function handleDeleteError(e) {
+    console.log('uh oh');
+    $('#results').text('Failed to delete a photographer from photographers-list, is the server working?');
+  }
+
 
 
 
