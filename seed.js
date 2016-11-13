@@ -57,48 +57,69 @@ var photographers_list = [
     styleOfWorks: "Natural Light Photography",
     note: "http://www.edwardburtynsky.com/site_contents/About/aboutBio.html",
     alive: true
+  },
+  {
+    profileImageUrl: "https://avatars2.githubusercontent.com/u/18222976?v=3&s=460",
+    name: "Yasuyoshi Sakamoto",
+    dateOfBirth: "2/3/1982",
+    location: "Tokyo Japan",
+    favoriteEquipment: "large format film & Digital photography",
+    bio: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.",
+    styleOfWorks: "Natural Light Photography",
+    note: "http://yasuphotography.com",
+    alive: true
+  }
+
+]
+
+
+
+var new_photos = [
+  {
+    imageUrl: "http://i.imgur.com/jIF205q.jpg",
+    title: "Untitled",
+    datePublished: " 2012",
+    description: "Angele Island",
+    fStop: 8,
+    shutterSpeed: "2h"
+    // photographer: {type: object.type.objectId, ref: 'Photographer'}
+
+  },
+  {
+    imageUrl: "http://i.imgur.com/DF3gMcI.jpg",
+    title: "Untitled",
+    datePublished: "2011",
+    description: "San Francisco",
+    fStop: 11,
+    shutterSpeed: "2h"
+    // photographer: {type: object.type.objectId, ref: 'Photographer'}
+
+  },
+  {
+    imageUrl: "http://i.imgur.com/FsQioQX.jpg",
+    title: "Untitled",
+    datePublished: "2016",
+    description: "India",
+    fStop: 8,
+    shutterSpeed: "1/60"
+    // photographer: {type: object.type.objectId, ref: 'Photographer'}
   }
 ]
 
 
-// var PhotoSchema = new Schema({
-//   title: String,
-//   datePublished: String,
-//   description: String,
-//   fStop: Number,
-//   shutterSpeed: Number,
-//   photographer: {type: object.type.objectId, ref: 'Photographer'}
+// db.Photo.remove({}, function(err, photo) {
+//   if(err) {
+//     console.log('Error occurred in remove', err);
+//   } else {
+//     console.log('Removed my photos');
+//     db.Photo.create(new_photos, function(err, photo) {
+//       if (err) { return console.log('err', err); }
+//       console.log('Created ' + photo.length + ' photos');
+//       process.exit();
+//     });
+//   }
 // });
 
-// var photos_list = [
-//   {
-//     title: "aaaa",
-//     datePublished: " 11/11/11",
-//     description: "ajsjsjsj",
-//     fStop: 8,
-//     shutterSpeed: 1/60,
-//     photographer: {type: }
-//
-//   },
-//   {
-//     title: "aaaa",
-//     datePublished: " 11/11/11",
-//     description: "ajsjsjsj",
-//     fStop: 8,
-//     shutterSpeed: 1/60,
-//     photographer: {type: }
-//
-//   },
-//   {
-//     title: "aaaa",
-//     datePublished: " 11/11/11",
-//     description: "ajsjsjsj",
-//     fStop: 8,
-//     shutterSpeed: 1/60,
-//     photographer: {type: }
-//
-//   }
-// ]
 
 
 db.Profile.remove({}, function(err, myProfile) {

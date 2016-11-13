@@ -239,6 +239,19 @@ $(document).ready(function(){
 
   });
 
+  // function handleDeleteAPhotographer(json) {
+  //   var deleteThisPhotographer = json;
+  //   var photographerId = deleteThisPhotographer._id;
+  //   var photographerToDelete = photographersList.find(function(photographer) {
+  //     return photographer._id == photographerId;
+  //
+  //     photographersList.splice(photographersList.indexOf(photographerToDelete), 1);
+  //
+  //     renderPhotographers();
+  //   });
+  //
+  // }
+
 
   function handleDeleteAPhotographer(json) {
     var deleteThisPhotographer = json;

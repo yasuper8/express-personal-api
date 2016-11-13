@@ -15,19 +15,3 @@ var mongoose = require('mongoose'),
 
   var Photographer = mongoose.model('Photographer', PhotographerSchema);
   module.exports = Photographer;
-
-
-  // var PhotoSchema = new Schema({
-  //   title: String,
-  //   datePublished: String,
-  //   description: String,
-  //   fStop: Number,
-  //   shutterSpeed: Number,
-  //   photographer: {type: object.type.objectId, ref: 'Photographer'}
-  // });
-
-
-
-
-// var Photo = mongoose.model('Photo', PhotoSchema);
-// module.exports = Photo;
