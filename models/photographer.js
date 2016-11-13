@@ -10,7 +10,6 @@ var mongoose = require('mongoose'),
     bio: String,
     styleOfWorks: String,
     note: String,
-    photographerImage: String,
     alive: Boolean
   });
 
