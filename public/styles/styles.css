@@ -10,9 +10,13 @@ h1 h2 {
 }
 
 #yasu-headshot {
-  width: 300px;
+  width: 200px;
   border-radius: 30px;
   display: block;
   margin: 0 auto;
 
 }
+
+/*.fixed-width-500 {
+  max-width: 200px;
+}*/

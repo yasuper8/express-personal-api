@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Blank</title>
+  <title>Yasu Personal API</title>
 
   <!-- STYLESHEETS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -14,7 +14,7 @@
   <!-- VENDOR SCRIPTS -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
-
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <!-- APPLICATION SCRIPTS -->
   <script src="/scripts/app.js"></script>
 </head>
@@ -22,55 +22,90 @@
 <body>
   <div class="container">
     <div class="row">
-      <div class="col-md-8 col-md-offset-2">
+      <div class="col-md-10 col-md-offset-2">
         <h1>Photographs and Photopgraphers</h1>
-        <h4><a href="/api">Read My API Documentation</a></h4>
         <div id="profileTarget">
 
           <!-- Handlebars template for my profile -->
-            <script id="profile-template" type="text/x-handlebars-template">
-              <div class="row">
-                <div class='col-sx-4'>
-                  <img src="{{profileImageUrl}}" class="img-responsive">
-                </div>
-                <div class="col-xs-8">
-                  <p><strong>{{name}}</strong></p>
-                  <a href="{{githubLink}}"><strong>Yasu's Github</strong></a>
-                  <img id="yasu-headshot" src="{{githubProfileImage}}" alt="">
-                  <a href="{{personalSiteLink}}"><strong>Yasu's Portfolios</strong></a>
-                  <p><strong>Location: {{currentCity}}</strong></p>
-                  <p><strong>My pets: {{#each pets}} Name: {{name}} Type: {{type}} // {{/each}}</strong></p>
-                </div>
+          <script id="profile-template" type="text/x-handlebars-template">
+            <div class="row">
+              <div class='col-sx-4'>
+                <img src="{{profileImageUrl}}" class="img-responsive">
               </div>
-            </script>
+              <div class="col-xs-8">
+                <h2><strong>{{name}}</strong></h2>
+                <h4><a href="/api">Read My API Documentation</a></h4>
+                <img id="yasu-headshot" src="{{githubProfileImage}}" alt="">
+                <a href="{{githubLink}}"><strong>Yasu's Github || </strong></a>
+                <a href="{{personalSiteLink}}"><strong>Yasu's Portfolios</strong></a>
+                <p><strong>Location: {{currentCity}}</strong></p>
+                <p><strong>My pets: {{#each pets}} Name: {{name}} Type: {{type}} // {{/each}}</strong></p>
+              </div>
+            </div>
+          </script>
 
         </div>
-        <!-- <form id="photographer-search">
-          <div class="form-group">
-            <input type="text" name="name" id="name" placeholder="Name">
-          </div>
-          <div class="form-group">
-            <input type="text" id="dateOfBirth" placeholder="Date of Birth">
-          </div> -->
-          <!-- <div class="form-group">
-              <input type="text" id="location" placeholder="Name">
-            </div>
-            <div class="form-group">
-              <input type="text" id="mediumType" placeholder="Name">
-            </div>
-            <div class="form-group">
-              <textarea name="bio" id="bio" rows="10" cols="50">Write something here</textarea>
-            </div> -->
-          <!-- <div class="form-group">
-            <input type="submit" class="btn btn-block btn-success" value="Search">
-          </div>
-        </form> -->
-        <!-- <div class="text-center" id="loading">
-          <img src="../public/images/loading.gif">
-        </div> -->
 
         <hr>
-        <form method="POST" action="/api/photographers-list" id="newPhotographer">
+        <!-- Search By Name -->
+        <h3><strong>Search By Name</strong></h3>
+        <form method="GET" action="" id="searchByName">
+          <label for="photographer-name">Name : <input class="reset" id="name" name="name" type="text" placeholder="Photographer's Name"  required></label>
+          <input type="submit" class="searchByNameBtn">
+        </form>
+
+        <hr>
+
+
+        <div class="container">
+          <h2><strong> Would you like to add a photographer to the list?</strong></h2>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updatePhotographer">
+            Let's create one!
+          </button>
+          <div class="modal fade" id="updatePhotographer">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <h3 class="modal-title"><strong>Add a photographer data to this list!</strong></h3>
+                </div>
+                <div class="modal-body">
+                  <!-- Create a photographer data -->
+                  <form method="POST" action="/api/photographers-list" id="newPhotographer">
+                    <div class="container">
+                      <div class="row form">
+                        <label for="photographer-profilePhoto">Profile image URL : <input class="reset" name="profileImageUrl" type="text" placeholder="Profile photo URL"></label>
+                        <label for="photographer-name">Name : <input class="reset" name="name" type="text" placeholder="Photographer's Name"  required></label>
+                        <label for="photographer-birth-day">Date of Birth : <input class="reset" name="dateOfBirth" type="text" placeholder="Date of Birth" ></label>
+                        <label for="photographer-location">Location : <input class="reset" name="location" type="text" placeholder="Location" ></label>
+                        <label for="medium-type">Medium Type : <input class="reset" name="mediumType" type="text" placeholder="Medium Type"  required></label>
+                        <label for="photographer-bio">Biography : <textarea class="reset" name="bio" type="text" placeholder="Biography" title="Enter Biography Link Here" rows="5" cols="45" required></textarea></label>
+                        <label for="photographer-style">Photographer's Style : <input class="reset" name="styleOfWorks" type="text" placeholder="Style of Works"  ></label>
+                        <label for="note-citations">A Related Link : <input class="reset" name="note" type="text" placeholder="Citation Notes and links" ></label>
+                        <label for="alive-true">Alive :  <input type="radio" name="optradio">  True  <input type="radio" name="optradio">  False  </label>
+                        <input class="btn btn-default submitBtn" type="submit"></input>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                </div>
+              </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+          </div><!-- /.modal -->
+          </div>
+
+
+        <hr>
+
+        </div>
+
+        <!-- Create a photographer data -->
+        <!-- <form method="POST" action="/api/photographers-list" id="newPhotographer">
             <div class="container">
              <h2><strong>Add a photographer data to this list!</strong></h2>
                 <div class="row form">
@@ -86,11 +121,7 @@
                   <input class="btn btn-default submitBtn" type="submit"></input>
                 </div>
             </div>
-        </form>
-
-        <hr>
-
-
+        </form> -->
 
         <br>
         <div id="results">
@@ -100,7 +131,7 @@
             <div class="row" id="photographers-list">
               <div class='col-sx-4'>
               </div>
-              <div class="col-xs-8">
+              <div class="col-xs-8 ">
                 <img src="{{profileImageUrl}}" class="profilePhoto img-responsive">
                 <p>Name: <strong>{{name}}</strong></p>
                 <!-- <p><a href="{{previewUrl}}" target="_blank" class="btn btn-sm btn-default">Preview
@@ -111,26 +142,31 @@
                 <p>Medium Type: <strong>{{mediumType}}</strong></p>
                 <p>Biography: <strong>{{bio}}</strong></p>
                 <p>A Related Link: <a href="{{note}}">link</a></p>
-                <p>Style of Work:  <strong>{{styleOfWorks}}</strong></p>
+                <p>Style of Work: <strong>{{styleOfWorks}}</strong></p>
                 <p>Living: <strong>{{alive}}</strong></p>
                 <button type="button" class="btn btn-danger deleteBtn" data-id={{_id}}>Delete</button>
                 <form method="POST" action="/api/photographers-list/:_id" id="updatePhotographer">
-                    <div class="container updateform">
-                     <h3><strong>Update A Photographer Data Above</strong></h3>
-                        <div class="row form">
-                            <label for="photographer-name">Name : <input class="reset" name="name" type="text" placeholder="Photographer's Name"></label>
-                            <label for="photographer-profilePhoto">Profile image URL : <input class="reset" name="name" type="text" placeholder="Profile photo URL"></label>
-                            <label for="photographer-birth-day">Date of Birth : <input class="reset" name="dateOfBirth" type="text" placeholder="Date of Birth" ></label>
-                            <label for="photographer-location">Location : <input class="reset" name="location" type="text" placeholder="Location" ></label>
-                            <label for="medium-type">Medium Type : <input class="reset" name="mediumType" type="text" placeholder="Medium Type"></label>
-                            <label for="photographer-bio">Biography : <textarea class="reset" name="bio" type="text" placeholder="Biography" title="Enter Biography Link Here" rows="5" cols="45"></textarea></label>
-                            <label for="photographer-style">Photographer's Style : <input class="reset" name="styleOfWorks" type="text" placeholder="Style of Works"  ></label>
-                            <label for="note-citations">A Related Link : <input class="reset" name="note" type="text" placeholder="Citation Notes and links" ></label>
-                            <label for="alive-true">Alive :  <input type="radio" name="optradio">  True  <input type="radio" name="optradio">  False  </label>
-                            <!-- <input class="btn btn-default updateSubmitBtn" type="submit"></input> -->
-                            <button type="button" class="btn btn-default updateBtn" data-id={{_id}}>Update</button>
-                        </div>
+                  <!-- Collapse edit info form here -->
+                  <div class="container updateform">
+                    <h2>Edit this photogrpher's info</h2>
+                    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#{{_id}}">Edit info</button>
+                    <div id="{{_id}}" class="collapse">
+                      <h3><strong>Update A Photographer Data Above</strong></h3>
+                      <div class="row form">
+                        <label for="photographer-name">Name : <input class="reset" name="name" type="text" placeholder="Photographer's Name"></label>
+                        <label for="photographer-profilePhoto">Profile image URL : <input class="reset" name="name" type="text" placeholder="Profile photo URL"></label>
+                        <label for="photographer-birth-day">Date of Birth : <input class="reset" name="dateOfBirth" type="text" placeholder="Date of Birth" ></label>
+                        <label for="photographer-location">Location : <input class="reset" name="location" type="text" placeholder="Location" ></label>
+                        <label for="medium-type">Medium Type : <input class="reset" name="mediumType" type="text" placeholder="Medium Type"></label>
+                        <label for="photographer-bio">Biography : <textarea class="reset" name="bio" type="text" placeholder="Biography" title="Enter Biography Link Here" rows="5" cols="45"></textarea></label>
+                        <label for="photographer-style">Photographer's Style : <input class="reset" name="styleOfWorks" type="text" placeholder="Style of Works"  ></label>
+                        <label for="note-citations">A Related Link : <input class="reset" name="note" type="text" placeholder="Citation Notes and links" ></label>
+                        <label for="alive-true">Alive :  <input type="radio" name="optradio">  True  <input type="radio" name="optradio">  False  </label>
+                        <!-- <input class="btn btn-default updateSubmitBtn" type="submit"></input> -->
+                        <button type="button" class="btn btn-default updateBtn" data-id={{_id}}>Update</button>
+                      </div>
                     </div>
+                  </div>
                 </form>
                 <hr>
               </div>

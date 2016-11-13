@@ -10,7 +10,8 @@ var mongoose = require('mongoose'),
     bio: String,
     styleOfWorks: String,
     note: String,
-    alive: Boolean
+    alive: Boolean,
+    photos: [{ type: Schema.Types.ObjectId, ref: "Photo"}]
   });
 
   var Photographer = mongoose.model('Photographer', PhotographerSchema);

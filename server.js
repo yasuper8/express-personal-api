@@ -36,23 +36,35 @@ app.use(express.static('public'));
  * HTML Endpoints
  */
 
+
+ ///////////////////////////
+ ////////Profile route//////
+ ///////////////////////////
+
 app.get('/', function homepage(req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
-var new_profile = {
-  name: "Yasuyoshi Sakamoto",
-  githubLink: "https://github.com/yasuper8",
-  githubProfileImage: "https://avatars2.githubusercontent.com/u/18222976?v=3&s=460",
-  personalSiteLink: "https://github.com/yasuper8/yasuper8.github.io",
-  currentCity: "San Francisco, California",
-  pets: [{name: "Moe", type: "Cat"}, {name: "Max", type: "Cat"}]
-}
+// var new_profile = {
+//   name: "Yasuyoshi Sakamoto",
+//   githubLink: "https://github.com/yasuper8",
+//   githubProfileImage: "https://avatars2.githubusercontent.com/u/18222976?v=3&s=460",
+//   personalSiteLink: "https://github.com/yasuper8/yasuper8.github.io",
+//   currentCity: "San Francisco, California",
+//   pets: [{name: "Moe", type: "Cat"}, {name: "Max", type: "Cat"}]
+// }
 
 // Get profile info
 app.get('/api/profile', function homepage(req, res) {
-  res.json(new_profile);
+  db.Profile.find(function(err, myProfile) {
+    if (err) {
+      return console.log('Get my profile error: ' + err);
+    }
+    res.json(myProfile[0]);
+  });
 });
+
+
 
 // Get all photgraphers in photographers-list
 app.get('/api/photographers-list', function (req, res) {
@@ -117,21 +129,30 @@ app.delete('/api/photographers-list/:id', function(req, res) {
 app.get('/api', function api_index(req, res) {
   // TODO: Document all your api endpoints below
   res.json({
-    woopsIForgotToDocumentAllMyEndpoints: true, // CHANGE ME ;)
+    woopsIForgotToDocumentAllMyEndpoints: false, // CHANGE ME ;)
     message: "Welcome to my personal api! Here's what you need to know!",
-    documentationUrl: "https://github.com/yasuper8/express-personal-api/blob/master/README.md", // CHANGE ME
-    baseUrl: "http://rocky-hollows-55860.herokuapp.com", // CHANGE ME
+    documentationUrl: "https://github.com/yasuper8/express-personal-api/blob/master/README.md",
+    baseUrl: "http://rocky-hollows-55860.herokuapp.com",
     endpoints: [
       {method: "GET", path: "/api", description: "Describes all available endpoints"},
-      {method: "GET", path: "/api/profile", description: "Display data about me"}, // CHANGE ME
+      {method: "GET", path: "/api/profile", description: "Display data about me"},
       {method: "GET", path: "/api/photographers-list", description: "Display all photographers in photographers-list"},
       {method: "GET", path: "/api/photographers-list/:id", description: "Display a single photographer in photographers-list"},
       {method: "POST", path: "/api/photographers-list", description: "Create a new photographer in photographers-list"},
       {method: "PUT", path: "/api/photographers-list/:id", description: "Update a single photographer in photographers-list"},
-      {method: "DELETE", path: "/api/photographers-list/:id", description: "Delete a single photographer in photographers-list"} // CHANGE ME
+      {method: "DELETE", path: "/api/photographers-list/:id", description: "Delete a single photographer in photographers-list"},
+      {method: "GET", path: "/api/photos-list", description: "Display all photos in photos-list"},
+      {method: "GET", path: "/api/photos-list/:id", description: "Display a single photo in photos-list"},
+      {method: "POST", path: "/api/photos-list", description: "Create a new photo in photos-list"},
+      {method: "PUT", path: "/api/photos-list/:id", description: "Update a single photo in photos-list"},
+      {method: "DELETE", path: "/api/photos-list/:id", description: "Delete a single photo in photos-list"}  // CHANGE ME
     ]
   })
 });
+
+///////////////////////
+/////Photos Route//////
+///////////////////////
 
 /**********
  * SERVER *

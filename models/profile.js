@@ -4,8 +4,8 @@ var mongoose = require('mongoose'),
 
 var ProfileSchema = new Schema({
   name: String,
-  githubLink: String,
   githubProfileImage: String,
+  githubLink: String,
   personalSiteLink: String,
   currentCity: String,
   pets: Array

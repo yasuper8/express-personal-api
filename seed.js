@@ -17,8 +17,8 @@ var db = require('./models');
 
 var new_profile = {
   name: "Yasuyoshi Sakamoto",
-  githubLink: "https://github.com/yasuper8",
   githubProfileImage: "https://avatars2.githubusercontent.com/u/18222976?v=3&s=460",
+  githubLink: "https://github.com/yasuper8",
   personalSiteLink: "https://github.com/yasuper8/yasuper8.github.io",
   currentCity: "San Francisco, California",
   pets: [{name: "Moe", type: "Cat"}, {name: "Max", type: "Cat"}]
@@ -69,7 +69,6 @@ var photographers_list = [
     note: "http://yasuphotography.com",
     alive: true
   }
-
 ]
 
 
@@ -82,8 +81,6 @@ var new_photos = [
     description: "Angele Island",
     fStop: 8,
     shutterSpeed: "2h"
-    // photographer: {type: object.type.objectId, ref: 'Photographer'}
-
   },
   {
     imageUrl: "http://i.imgur.com/DF3gMcI.jpg",
@@ -92,8 +89,6 @@ var new_photos = [
     description: "San Francisco",
     fStop: 11,
     shutterSpeed: "2h"
-    // photographer: {type: object.type.objectId, ref: 'Photographer'}
-
   },
   {
     imageUrl: "http://i.imgur.com/FsQioQX.jpg",
@@ -102,23 +97,22 @@ var new_photos = [
     description: "India",
     fStop: 8,
     shutterSpeed: "1/60"
-    // photographer: {type: object.type.objectId, ref: 'Photographer'}
   }
 ]
 
 
-// db.Photo.remove({}, function(err, photo) {
-//   if(err) {
-//     console.log('Error occurred in remove', err);
-//   } else {
-//     console.log('Removed my photos');
-//     db.Photo.create(new_photos, function(err, photo) {
-//       if (err) { return console.log('err', err); }
-//       console.log('Created ' + photo.length + ' photos');
-//       process.exit();
-//     });
-//   }
-// });
+db.Photo.remove({}, function(err, photo) {
+  if(err) {
+    console.log('Error occurred in remove', err);
+  } else {
+    console.log('Removed my photos');
+    db.Photo.create(new_photos, function(err, photo) {
+      if (err) { return console.log('err', err); }
+      console.log('Created ' + photo.length + ' photos');
+      process.exit();
+    });
+  }
+});
 
 
 

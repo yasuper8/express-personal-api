@@ -7,8 +7,8 @@ var PhotoSchema = new Schema({
   datePublished: String,
   description: String,
   fStop: Number,
-  shutterSpeed: String
-  // photographer: {type: object.type.objectId, ref: 'Photographer'}
+  shutterSpeed: String,
+  _creator: {type: Number, ref: 'Photographer'}
 });
 
 
