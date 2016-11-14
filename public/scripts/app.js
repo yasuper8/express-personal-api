@@ -181,19 +181,33 @@ $(document).ready(function(){
 //     }
 //   }
 //
+//   $inputs = $('#updatePhotographer :input');
+//
+//   var newInfo = {
+//       profileImageUrl: $inputs.profileImageUrl,
+//       name: $inputs.name,
+//       dateOfBirth: $inputs.dateOfBirth,
+//       location: $inputs.location,
+//       mediumType: $inputs.mediumType,
+//       bio: $inputs.bio,
+//       styleOfWorks: $inputs.styleOfWorks,
+//       note: $inputs.note,
+//       alive: $inputs.alive,
+//       _id: $inputs._id
+//   }
 //
 //   // // var updatedPhotographer = $(this).serialize();
 //   // console.log("updatedPhotographer : ", updatedPhotographer);
 //
-//   $.ajax({
-//     method: 'PUT',
-//     url: "api/photographers-list/" + $(this).attr('data-id'),
-//     data: $(this).serialize(),
-//     success: handleUpdateAPhotographer,
-//     error: handleUpdateError
-//   });
+//     $.ajax({
+//       method: 'PUT',
+//       url: "api/photographers-list/" + $(this).attr('data-id'),
+//       data: JSON.stringify(newInfo),
+//       success: handleUpdateAPhotographer,
+//       error: handleUpdateError
+//     });
 //
-// });
+//   });
 //
 // // $updatePhotographer.on('submit', function(event) {
 // //   event.preventDefault();
@@ -209,44 +223,44 @@ $(document).ready(function(){
 // // });
 //
 //
-// function handleUpdateAPhotographer(json) {
-//   // $('.reset').val('');
-//   // $results.empty();
-//   photographersList.splice(photographersList.indexOf(photographerToUpdate), 1, json);
-//   console.log("photographersList :",photographersList)
-//   renderPhotographers();
+//   function handleUpdateAPhotographer(json) {
+//     $('.reset').val('');
+//     $results.empty();
+//     photographersList.splice(photographersList.indexOf(photographerToUpdate), 1, json);
+//     console.log("photographersList :",photographersList)
+//     renderPhotographers();
 //
 //
-//   // for (var i = 0; i < photographersList.length; i++) {
-//   //   if (photographersList[i]._id === photographerId) {
-//   //     var newPhotographersInfo = {
-//   //       name: photographersList[i].name,
-//   //       dateOfBirth: photographersList[i].dateOfBirth,
-//   //       location: photographersList[i].location,
-//   //       mediumType: photographersList[i].mediumType,
-//   //       bio: photographersList[i].bio,
-//   //       styleOfWorks: photographersList[i].styleOfWorks,
-//   //       note: photographersList[i].note,
-//   //       alive: photographersList[i].alive,
-//   //       _id: photographersList[i]._id
-//   //     }
-//   //     var newPhotographersHtml = templatePhotographers(newPhotographersInfo);
-//   //
-//   //     // append html to the view
-//   //     $results.append(newPhotographersHtml);
-//   //
-//   //     renderPhotographers();
-//   //
-//   //   }
-//   // }
-// }
+//     // for (var i = 0; i < photographersList.length; i++) {
+//     //   if (photographersList[i]._id === photographerId) {
+//     //     var newPhotographersInfo = {
+//     //       name: photographersList[i].name,
+//     //       dateOfBirth: photographersList[i].dateOfBirth,
+//     //       location: photographersList[i].location,
+//     //       mediumType: photographersList[i].mediumType,
+//     //       bio: photographersList[i].bio,
+//     //       styleOfWorks: photographersList[i].styleOfWorks,
+//     //       note: photographersList[i].note,
+//     //       alive: photographersList[i].alive,
+//     //       _id: photographersList[i]._id
+//     //     }
+//     //     var newPhotographersHtml = templatePhotographers(newPhotographersInfo);
+//     //
+//     //     // append html to the view
+//     //     $results.append(newPhotographersHtml);
+//     //
+//     //     renderPhotographers();
+//     //
+//     //   }
+//     // }
+//   }
 //
-// function handleUpdateError(e) {
-//   console.log('uh oh');
-//   $('#results').text('Failed to update a photographer from photographers-list, is the server working?');
-// }
+//   function handleUpdateError(e) {
+//     console.log('uh oh');
+//     $('#results').text('Failed to update a photographer from photographers-list, is the server working?');
+//   }
 //
-//
+
 
 ///////////////////////////////////////
 ///////DELETE one photographer/////////
@@ -309,7 +323,7 @@ $(document).ready(function(){
   //   console.log("photographersList", photographersList);
   //   //clears search box
   //   $results.empty();
-  //
+  //   $resultsPhotos.empty()
   //   var targetId;
   //   var searchName = $name.val();
   //   if (searchName !== '') {
@@ -333,15 +347,14 @@ $(document).ready(function(){
   //       console.log("this is input val",searchName);
   //       $.ajax({
   //         method: 'GET',
-  //         url: "api/photographers-list/:id",
-  //         data: "id=" + targetId,
+  //         url: "api/photographers-list/" + targetId,
   //         success: handleSearchById,
   //         error: handleSearchByIdError
   //       });
   //     } else {
   //       // remind the user to enter a keyword
   //       // one way is a "quick and ugly" alert
-  //       alert("Enter a name keyword to search!");
+  //       $results.append("Enter a name keyword to search!");
   //     }
   //
   //     // reset photographers search form
@@ -379,7 +392,7 @@ $(document).ready(function(){
   //         note: photographer.note,
   //         alive: photographer.alive
   //       }
-  //       var tempHtml = template(spotifyTemplate)
+  //       var tempHtml = template(PhotographersInfo);
   //       $('#results').append(tempHtml);
   //     }
   //   }

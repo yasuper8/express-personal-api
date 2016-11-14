@@ -17,6 +17,10 @@ h1 h2 {
 
 }
 
+.updatePhotoform, .updateform {
+  padding-bottom: 3em;
+}
+
 hr {
   border: 0;
   border-bottom: 2px solid #F1D302;

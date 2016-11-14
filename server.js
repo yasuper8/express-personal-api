@@ -175,6 +175,7 @@ app.put('/api/photos-list/:id', function(req, res) {
 // Delete a single photo in photos-list
 app.delete('/api/photos-list/:id', function(req, res) {
   db.Photo.findOneAndRemove({_id: req.params.id}, function(err, photos) {
+    console.log('sever error ', err)
     res.json(photos);
   });
 });

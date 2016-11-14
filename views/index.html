@@ -212,7 +212,7 @@
                   <button type="button" class="btn btn-danger deleteBtn" data-id={{_id}}>Delete</button>
                   <form method="PUT" action="/api/photographers-list/:_id" id="updatePhotographer">
                     <!-- Collapse edit info form here -->
-                    <div class="container updateform">
+                    <div class="container updateform col-md-12">
                       <h2>Edit this photogrpher's info</h2>
                       <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#{{_id}}">Edit info</button>
                       <div id="{{_id}}" class="collapse">
@@ -261,11 +261,12 @@
                   <button type="button" class="btn btn-danger deleteBtn" data-id={{_id}}>Delete</button>
                   <form method="POST" action="/api/photos-list/:_id" id="updatePhoto">
                     <!-- Collapse edit info form here -->
-                    <div class="container updatePhotoform">
+                    <div class="container updatePhotoform col-md-12">
                       <h2>Edit this photos info</h2>
                       <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#{{_id}}">Edit info</button>
                       <div id="{{_id}}" class="collapse">
                         <h3><strong>Update Data for the Photo Above</strong></h3>
+                        <div class="container col-md-12">
                         <div class="row form">
                           <label for="photogTitle">Title : <input class="reset" name="title" type="text" placeholder="Photo's Title"></label>
                           <label for="photographer-name">Photographer : <input class="reset" name="photographerName" type="text" placeholder="PhotographerName"></label>
@@ -277,6 +278,7 @@
                           <!-- <input class="btn btn-default updateSubmitBtn" type="submit"></input> -->
                           <button type="button" class="btn btn-default updateBtn" data-id={{_id}}>Update</button>
                         </div>
+                      </div>
                       </div>
                     </div>
                   </form>
