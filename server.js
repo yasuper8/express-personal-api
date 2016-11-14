@@ -151,7 +151,7 @@ app.get('/api/photos-list/:id', function(req, res) {
 // create a new photo in photographers-list
 app.post('/api/photos-list', function(req, res) {
   var photo = new db.Photo(req.body);
-  photographer.save(function(err, newPhoto) {
+  photo.save(function(err, newPhoto) {
     res.json(newPhoto);
   });
 });
@@ -174,7 +174,7 @@ app.put('/api/photos-list/:id', function(req, res) {
 
 // Delete a single photo in photos-list
 app.delete('/api/photos-list/:id', function(req, res) {
-  db.Photographer.findOneAndRemove({_id: req.params.id}, function(err, photographer) {
+  db.Photo.findOneAndRemove({_id: req.params.id}, function(err, photos) {
     res.json(photos);
   });
 });

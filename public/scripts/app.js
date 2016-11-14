@@ -27,6 +27,8 @@ $(document).ready(function(){
   //form for updaate
   var $updatePhotographer = $('#updatePhotographer');
 
+  //form to add a new photo
+  var $newPhoto =$('#newPhoto');
 
 /////////////////////////
 /////GET my profile/////
@@ -288,7 +290,6 @@ $(document).ready(function(){
         break;  // No reason to keep searching after find a photographer (this is why didn't use forEach)
       }
     }
-
   }
 
 
@@ -298,15 +299,9 @@ $(document).ready(function(){
   }
 
 
-
-
-
-
 ///////////////////////////////////////////
 //////////GET One photographer by id///////
 //////////////////////////////////////////
-
-
 
   // $searchByName.on('submit', function(event) {
   //   event.preventDefault();
@@ -432,7 +427,6 @@ $(document).ready(function(){
       // append html to the view
       $resultsPhotos.append(photosHtml);
     }
-
   }
 
 
@@ -443,43 +437,74 @@ $(document).ready(function(){
 
   function handleErrorPhotos(error) {
     console.log('uh oh Error ' + error);
-    $('#results').text('Failed to load photos in photographers-list, is the server working?' + error);
+    $('#results').text('Failed to load photos in photos-list, is the server working?' + error);
   }
 
 ////////////////////////////////////////
 ////////POST Create one photo/////////
 ///////////////////////////////////
 
-$newPhoto.on('submit', function(event) {
-  event.preventDefault();
+  $newPhoto.on('submit', function(event) {
+    event.preventDefault();
+
+    $.ajax({
+      method: 'POST',
+      url: '/api/photos-list',
+      data: $(this).serialize(),
+      success: postPhotoSuccess,
+      error: handleErrorPhotoPost
+    });
+  })
+
+  function postPhotoSuccess(json) {
+      $('.reset').val('');
+
+      $resultsPhotos.empty();
+      photosList.push(json);
+
+      renderPhotos();
+  }
+
+  function handleErrorPhotoPost(error) {
+    console.log('uh oh Post Error ' + error);
+    $('#results').text('Failed to Post a new photo in photos-list, is the server working?' + error);
+  }
 
 
-  $.ajax({
-    method: 'POST',
-    url: '/api/photos-list',
-    data: $(this).serialize(),
-    success: postSuccess,
-    error: handleErrorPost
+//////////////////////////////////////
+///////DELETE a photo//////////////
+/////////////////////////////////
+
+  $resultsPhotos.on('click', '.deleteBtn', function(event) {
+    event.preventDefault();
+
+    $.ajax({
+      method: 'DELETE',
+      url: "api/photos-list/" + $(this).attr('data-id'),
+      success: handleDeleteAPhoto,
+      error: handleDeletePhotoError
+    });
+
   });
-})
 
-
-function postSuccess(json) {
-    $('.reset').val('');
-
+  function handleDeleteAPhoto(json) {
+    var deleteThisPhoto = json;
+    var photoId = deleteThisPhoto._id;
     $resultsPhotos.empty();
-    photosList.push(json);
-
-    renderPhotos();
-}
-
-function handleErrorPost(error) {
-  console.log('uh oh Post Error ' + error);
-  $('#results').text('Failed to Post a new photographers in photographers-list, is the server working?' + error);
-}
-
-
+    console.log("delete photo ID :", photoId );
+    for (var i = 0; i < photosList.length; i++) {
+      if (photosList[i]._id === photoId) {
+        photosList.splice(i, 1);
+        renderPhotos();
+        break;  // No reason to keep searching after find a photo (this is why didn't use forEach)
+      }
+    }
+  }
 
 
+  function handleDeletePhotoError(e) {
+    console.log('uh oh');
+    $('#results').text('Failed to delete a photo from photos-list, is the server working?');
+  }
 
 });// end ready!

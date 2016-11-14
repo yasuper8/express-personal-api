@@ -26,11 +26,16 @@ hr {
   max-width: 15em;
   border-radius: 20px;
 }
+.photos {
+  max-width: 30em;
+}
 
 #photographers-list {
   padding-left: 12em;
 }
-
+#photos-list {
+  padding-left: 6em;
+}
 /*#newPhotographer {
   max-width: 60%;
 }*/
