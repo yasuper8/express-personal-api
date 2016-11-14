@@ -58,7 +58,7 @@
 
 
         <div class="container">
-          <h2><strong> Would you like to add a photographer to the list?</strong></h2>
+          <h2><strong> Would you like to add a photographer to this collections?</strong></h2>
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updatePhotographer">
             Let's create one!
           </button>
@@ -69,12 +69,13 @@
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
-                  <h3 class="modal-title"><strong>Add a photographer data to this list!</strong></h3>
+                  <h3 class="modal-title"><strong>Add a photographer data to this collections!</strong></h3>
                 </div>
                 <div class="modal-body">
+
                   <!-- Create a photographer data -->
                   <form method="POST" action="/api/photographers-list" id="newPhotographer">
-                    <div class="container">
+                    <div class="container col-md-12">
                       <div class="row form">
                         <label for="photographer-profilePhoto">Profile image URL : <input class="reset" name="profileImageUrl" type="text" placeholder="Profile photo URL"></label>
                         <label for="photographer-name">Name : <input class="reset" name="name" type="text" placeholder="Photographer's Name"  required></label>
@@ -89,6 +90,7 @@
                       </div>
                     </div>
                   </form>
+
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -104,6 +106,58 @@
 
 
         <hr>
+
+          <!-- Form for add a new photo -->
+        <div class="container">
+          <h2><strong> Would you like to add a photo to this collections?</strong></h2>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updatePhoto">
+            Let's create one!
+          </button>
+          <div class="modal fade" id="updatePhoto">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <h3 class="modal-title"><strong>Add a photo data to this collections!</strong></h3>
+                </div>
+                <div class="modal-body">
+
+                  <!-- Create a photo data -->
+                  <form method="POST" action="/api/photos-list" id="newPhoto">
+                    <div class="container col-md-12">
+                      <div class="row form">
+                        <label for="photoTitle">Title : <input class="reset" name="title" type="text" placeholder="Photo's Title"></label>
+                        <label for="photographer">Photographer : <input class="reset" name="photographerName" type="text" placeholder="Photographer Name"></label>
+                        <label for="photoUrl">Image URL : <input class="reset" name="imageUrl" type="text" placeholder="Photo URL"></label>
+                        <label for="photoDatePublished">Date Published : <input class="reset" name="datePublished" type="text" placeholder="Date Published" ></label>
+                        <label for="photoDesctiption">Descriptions : <textarea class="reset" name="description" type="text" placeholder="Descriptions" title="Enter Descriptions Here" rows="5" cols="45"></textarea></label>
+                        <label for="fStop">f-stop: <input class="reset" name="f-stop" type="text" placeholder="f-stop"></label>
+                        <label for="Shutterspeed">Shutter Speed : <input class="reset" name="shutterSpeed" type="text" placeholder="Shutter Speed" ></label>
+                        <input class="btn btn-default submitBtn" type="submit"></input>
+                      </div>
+                    </div>
+                  </form>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                </div>
+              </div>
+              <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+          </div>
+          <!-- /.modal -->
+        </div>
+
+
+
+
+        <hr>
+
 
       </div>
 
@@ -189,6 +243,7 @@
             <div class="col-xs-8 ">
               <img src="{{imageUrl}}" class="photos img-responsive">
               <p>Title: <strong>{{title}}</strong></p>
+              <p>Photographer: <strong>{{photographerName}}</strong></p>
               <p>Date Published: <strong>{{datePublished}}</strong></p>
               <p>Descriptions: <strong>{{description}}</strong></p>
               <p>f-stop: <strong>{{fStop}}</strong></p>
@@ -202,12 +257,13 @@
                   <div id="{{_id}}" class="collapse">
                     <h3><strong>Update Data for the Photo Above</strong></h3>
                     <div class="row form">
-                      <label for="photographer-name">Title : <input class="reset" name="title" type="text" placeholder="Photo's Title"></label>
-                      <label for="photographer-profilePhoto">Image URL : <input class="reset" name="imageUrl" type="text" placeholder="Photo URL"></label>
-                      <label for="photographer-birth-day">Date Published : <input class="reset" name="datePublished" type="text" placeholder="Date Published" ></label>
-                      <label for="photographer-bio">Descriptions : <textarea class="reset" name="description" type="text" placeholder="Descriptions" title="Enter Descriptions Here" rows="5" cols="45"></textarea></label>
-                      <label for="medium-type">f-stop: <input class="reset" name="f-stop" type="text" placeholder="f-stop"></label>
-                      <label for="photographer-location">Shutter Speed : <input class="reset" name="shutterSpeed" type="text" placeholder="Shutter Speed" ></label>
+                      <label for="photogTitle">Title : <input class="reset" name="title" type="text" placeholder="Photo's Title"></label>
+                      <label for="photographer-name">Photographer : <input class="reset" name="photographerName" type="text" placeholder="PhotographerName"></label>
+                      <label for="photoUrl">Image URL : <input class="reset" name="imageUrl" type="text" placeholder="Photo URL"></label>
+                      <label for="photoDatepublished">Date Published : <input class="reset" name="datePublished" type="text" placeholder="Date Published" ></label>
+                      <label for="photoDescription">Descriptions : <textarea class="reset" name="description" type="text" placeholder="Descriptions" title="Enter Descriptions Here" rows="5" cols="45"></textarea></label>
+                      <label for="fStop">f-stop: <input class="reset" name="f-stop" type="text" placeholder="f-stop"></label>
+                      <label for="shutterSpeed">Shutter Speed : <input class="reset" name="shutterSpeed" type="text" placeholder="Shutter Speed" ></label>
                       <!-- <input class="btn btn-default updateSubmitBtn" type="submit"></input> -->
                       <button type="button" class="btn btn-default updateBtn" data-id={{_id}}>Update</button>
                     </div>

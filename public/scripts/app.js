@@ -158,93 +158,93 @@ $(document).ready(function(){
 //////POST Update a photographer////////
 ///////////////////////////////////////
 
-$results.on('click', '.updateBtn', function(event) {
-  event.preventDefault();
-  console.log("updateBtn clicked!");
-
-  var photographerToUpdate;
-
-  var photographerId = $(this).closest('.updateBtn').attr('data-id');
-  console.log("photographerId : ", photographerId);
-  // find the photographer to update by its id
-//   photographerToUpdate = photographersList.find(function (photographer) {
-// console.log("photographerToUpdate : ", photographerToUpdate);
-//     return photographer._id == photographerId;
-//   });
-
-
-  for (var i = 0; i < photographersList.length; i++) {
-    if (photographersList[i]._id == photographerId) {
-      photographerToUpdate = photographersList[i];
-    }
-  }
-
-
-  // // var updatedPhotographer = $(this).serialize();
-  // console.log("updatedPhotographer : ", updatedPhotographer);
-
-  $.ajax({
-    method: 'PUT',
-    url: "api/photographers-list/" + $(this).attr('data-id'),
-    data: $(this).serialize(),
-    success: handleUpdateAPhotographer,
-    error: handleUpdateError
-  });
-
-});
-
-// $updatePhotographer.on('submit', function(event) {
+// $results.on('click', '.updateBtn', function(event) {
 //   event.preventDefault();
-//     console.log("updateBtn clicked!");
+//   console.log("updateBtn clicked!");
 //
-//     $.ajax({
-//       method: 'PUT',
-//       url: "api/photographers-list/" + $(this).attr('data-id'),
-//       success: handleUpdateAPhotographer,
-//       error: handleUpdateError
-//     });
+//   var photographerToUpdate;
+//
+//   var photographerId = $(this).closest('.updateBtn').attr('data-id');
+//   console.log("photographerId : ", photographerId);
+//   // find the photographer to update by its id
+// //   photographerToUpdate = photographersList.find(function (photographer) {
+// // console.log("photographerToUpdate : ", photographerToUpdate);
+// //     return photographer._id == photographerId;
+// //   });
+//
+//
+//   for (var i = 0; i < photographersList.length; i++) {
+//     if (photographersList[i]._id == photographerId) {
+//       photographerToUpdate = photographersList[i];
+//     }
+//   }
+//
+//
+//   // // var updatedPhotographer = $(this).serialize();
+//   // console.log("updatedPhotographer : ", updatedPhotographer);
+//
+//   $.ajax({
+//     method: 'PUT',
+//     url: "api/photographers-list/" + $(this).attr('data-id'),
+//     data: $(this).serialize(),
+//     success: handleUpdateAPhotographer,
+//     error: handleUpdateError
+//   });
 //
 // });
-
-
-function handleUpdateAPhotographer(json) {
-  // $('.reset').val('');
-  // $results.empty();
-  photographersList.splice(photographersList.indexOf(photographerToUpdate), 1, json);
-  console.log("photographersList :",photographersList)
-  renderPhotographers();
-
-
-  // for (var i = 0; i < photographersList.length; i++) {
-  //   if (photographersList[i]._id === photographerId) {
-  //     var newPhotographersInfo = {
-  //       name: photographersList[i].name,
-  //       dateOfBirth: photographersList[i].dateOfBirth,
-  //       location: photographersList[i].location,
-  //       mediumType: photographersList[i].mediumType,
-  //       bio: photographersList[i].bio,
-  //       styleOfWorks: photographersList[i].styleOfWorks,
-  //       note: photographersList[i].note,
-  //       alive: photographersList[i].alive,
-  //       _id: photographersList[i]._id
-  //     }
-  //     var newPhotographersHtml = templatePhotographers(newPhotographersInfo);
-  //
-  //     // append html to the view
-  //     $results.append(newPhotographersHtml);
-  //
-  //     renderPhotographers();
-  //
-  //   }
-  // }
-}
-
-function handleUpdateError(e) {
-  console.log('uh oh');
-  $('#results').text('Failed to update a photographer from photographers-list, is the server working?');
-}
-
-
+//
+// // $updatePhotographer.on('submit', function(event) {
+// //   event.preventDefault();
+// //     console.log("updateBtn clicked!");
+// //
+// //     $.ajax({
+// //       method: 'PUT',
+// //       url: "api/photographers-list/" + $(this).attr('data-id'),
+// //       success: handleUpdateAPhotographer,
+// //       error: handleUpdateError
+// //     });
+// //
+// // });
+//
+//
+// function handleUpdateAPhotographer(json) {
+//   // $('.reset').val('');
+//   // $results.empty();
+//   photographersList.splice(photographersList.indexOf(photographerToUpdate), 1, json);
+//   console.log("photographersList :",photographersList)
+//   renderPhotographers();
+//
+//
+//   // for (var i = 0; i < photographersList.length; i++) {
+//   //   if (photographersList[i]._id === photographerId) {
+//   //     var newPhotographersInfo = {
+//   //       name: photographersList[i].name,
+//   //       dateOfBirth: photographersList[i].dateOfBirth,
+//   //       location: photographersList[i].location,
+//   //       mediumType: photographersList[i].mediumType,
+//   //       bio: photographersList[i].bio,
+//   //       styleOfWorks: photographersList[i].styleOfWorks,
+//   //       note: photographersList[i].note,
+//   //       alive: photographersList[i].alive,
+//   //       _id: photographersList[i]._id
+//   //     }
+//   //     var newPhotographersHtml = templatePhotographers(newPhotographersInfo);
+//   //
+//   //     // append html to the view
+//   //     $results.append(newPhotographersHtml);
+//   //
+//   //     renderPhotographers();
+//   //
+//   //   }
+//   // }
+// }
+//
+// function handleUpdateError(e) {
+//   console.log('uh oh');
+//   $('#results').text('Failed to update a photographer from photographers-list, is the server working?');
+// }
+//
+//
 
 ///////////////////////////////////////
 ///////DELETE one photographer/////////
@@ -308,93 +308,93 @@ function handleUpdateError(e) {
 
 
 
-  $searchByName.on('submit', function(event) {
-    event.preventDefault();
-    console.log('serach btn pressed!')
-    console.log("photographersList", photographersList);
-    //clears search box
-    $results.empty();
-
-    var targetId;
-    var searchName = $name.val();
-    if (searchName !== '') {
-
-      console.log('photographersList', photographersList);
-      console.log(photographersList[0].name.split(' '));
-
-      for (var i = 0; i < photographersList.length; i++) {
-        var targetName = photographersList[i].name
-        var targetNameArr = targetName.split(' ');
-        targetNameArr.forEach(function(word, index) {
-          if (word.toLowerCase() === searchName.toLowerCase()) {
-            targetId = photographersList[i]._id;
-            console.log("target ID",targetId);
-          }
-        });
-      }
-
-
-        // $loading.show();
-        console.log("this is input val",searchName);
-        $.ajax({
-          method: 'GET',
-          url: "api/photographers-list/:id",
-          data: "id=" + targetId,
-          success: handleSearchById,
-          error: handleSearchByIdError
-        });
-      } else {
-        // remind the user to enter a keyword
-        // one way is a "quick and ugly" alert
-        alert("Enter a name keyword to search!");
-      }
-
-      // reset photographers search form
-      // $searchByName.reset();
-
-  });
-
-  function handleSearchById(photographer) {
-  console.log("result response from photographers list", photographer);
-
-
-    var photographerFound = photographer.name;
-
-    if(photographer.length === 0) {
-      alert("There is no match with the name you input");
-    } else {
-
-      // console.log("trackResults :" trackResults.album.images[0].url)
-
-      // hide loading gif
-      // $loading.hide();
-
-      var source = $("#photographers-template").html();
-      var template = Handlebars.compile(source);
-
-
-      for(var i = 0; i < photographer.length; i++) {
-        var PhotographersInfo = {
-          name: photographer.name,
-          dateOfBirth: photographer.dateOfBirth,
-          location: photographer.location,
-          mediumType: photographer.mediumType,
-          bio: photographer.bio,
-          styleOfWorks: photographer.styleOfWorks,
-          note: photographer.note,
-          alive: photographer.alive
-        }
-        var tempHtml = template(spotifyTemplate)
-        $('#results').append(tempHtml);
-      }
-    }
-
-  }
-
-  function handleSearchByIdError(e) {
-    console.log('uh oh');
-    $('#results').text('Failed to search a photographer from photographers-list, is the server working?');
-  }
+  // $searchByName.on('submit', function(event) {
+  //   event.preventDefault();
+  //   console.log('serach btn pressed!')
+  //   console.log("photographersList", photographersList);
+  //   //clears search box
+  //   $results.empty();
+  //
+  //   var targetId;
+  //   var searchName = $name.val();
+  //   if (searchName !== '') {
+  //
+  //     console.log('photographersList', photographersList);
+  //     console.log(photographersList[0].name.split(' '));
+  //
+  //     for (var i = 0; i < photographersList.length; i++) {
+  //       var targetName = photographersList[i].name
+  //       var targetNameArr = targetName.split(' ');
+  //       targetNameArr.forEach(function(word, index) {
+  //         if (word.toLowerCase() === searchName.toLowerCase()) {
+  //           targetId = photographersList[i]._id;
+  //           console.log("target ID",targetId);
+  //         }
+  //       });
+  //     }
+  //
+  //
+  //       // $loading.show();
+  //       console.log("this is input val",searchName);
+  //       $.ajax({
+  //         method: 'GET',
+  //         url: "api/photographers-list/:id",
+  //         data: "id=" + targetId,
+  //         success: handleSearchById,
+  //         error: handleSearchByIdError
+  //       });
+  //     } else {
+  //       // remind the user to enter a keyword
+  //       // one way is a "quick and ugly" alert
+  //       alert("Enter a name keyword to search!");
+  //     }
+  //
+  //     // reset photographers search form
+  //     // $searchByName.reset();
+  //
+  // });
+  //
+  // function handleSearchById(photographer) {
+  // console.log("result response from photographers list", photographer);
+  //
+  //
+  //   var photographerFound = photographer.name;
+  //
+  //   if(photographer.length === 0) {
+  //     alert("There is no match with the name you input");
+  //   } else {
+  //
+  //     // console.log("trackResults :" trackResults.album.images[0].url)
+  //
+  //     // hide loading gif
+  //     // $loading.hide();
+  //
+  //     var source = $("#photographers-template").html();
+  //     var template = Handlebars.compile(source);
+  //
+  //
+  //     for(var i = 0; i < photographer.length; i++) {
+  //       var PhotographersInfo = {
+  //         name: photographer.name,
+  //         dateOfBirth: photographer.dateOfBirth,
+  //         location: photographer.location,
+  //         mediumType: photographer.mediumType,
+  //         bio: photographer.bio,
+  //         styleOfWorks: photographer.styleOfWorks,
+  //         note: photographer.note,
+  //         alive: photographer.alive
+  //       }
+  //       var tempHtml = template(spotifyTemplate)
+  //       $('#results').append(tempHtml);
+  //     }
+  //   }
+  //
+  // }
+  //
+  // function handleSearchByIdError(e) {
+  //   console.log('uh oh');
+  //   $('#results').text('Failed to search a photographer from photographers-list, is the server working?');
+  // }
 
 //////////////////////////////////
 //////GET all photos//////////////
@@ -403,47 +403,80 @@ function handleUpdateError(e) {
 
 
 // compile handlebars template for photgraphers
-  // var photosSource = $('#photos-template').html();
-  // templatePhotos = Handlebars.compile(photosSource);
-  //
-  // //Get all photogrphers in photographers-list
-  // $.ajax({
-  //   method: 'GET',
-  //   url: "api/photographers-list",
-  //   success: handleSuccessAllPhotos,
-  //   error: handleErrorPhotos
-  // });
-  //
-  // function renderPhotos() {
-  //   $results.empty();
-  //   for(var i = 0; i < photosList.length; i++) {
-  //     var photosInfo = {
-  //       imageUrl: photosList[i].imageUrl,
-  //       title: photosList[i].title,
-  //       datePublished: photosList[i].datePublished,
-  //       description: photosList[i].description,
-  //       fStop: photosList[i].fStop,
-  //       shutterSpeed: photosList[i].shutterSpeed,
-  //       _id: photosList[i]._id
-  //     }
-  //     var photosHtml = templatePhotos(photosInfo);
-  //
-  //     // append html to the view
-  //     $resultsPhotos.append(photosHtml);
-  //   }
-  //
-  // }
-  //
-  //
-  // function handleSuccessAllPhotos(json) {
-  //   photosList = json;
-  //   renderPhotos();
-  // }
-  //
-  // function handleErrorPhotos(error) {
-  //   console.log('uh oh Error ' + error);
-  //   $('#results').text('Failed to load photos in photographers-list, is the server working?' + error);
-  // }
+  var photosSource = $('#photos-template').html();
+  templatePhotos = Handlebars.compile(photosSource);
+
+  //Get all photogrphers in photographers-list
+  $.ajax({
+    method: 'GET',
+    url: "api/photos-list",
+    success: handleSuccessAllPhotos,
+    error: handleErrorPhotos
+  });
+
+  function renderPhotos() {
+
+    for(var i = 0; i < photosList.length; i++) {
+      var photosInfo = {
+        imageUrl: photosList[i].imageUrl,
+        photographerName: photosList[i].photographerName,
+        title: photosList[i].title,
+        datePublished: photosList[i].datePublished,
+        description: photosList[i].description,
+        fStop: photosList[i].fStop,
+        shutterSpeed: photosList[i].shutterSpeed,
+        _id: photosList[i]._id
+      }
+      var photosHtml = templatePhotos(photosInfo);
+
+      // append html to the view
+      $resultsPhotos.append(photosHtml);
+    }
+
+  }
+
+
+  function handleSuccessAllPhotos(json) {
+    photosList = json;
+    renderPhotos();
+  }
+
+  function handleErrorPhotos(error) {
+    console.log('uh oh Error ' + error);
+    $('#results').text('Failed to load photos in photographers-list, is the server working?' + error);
+  }
+
+////////////////////////////////////////
+////////POST Create one photo/////////
+///////////////////////////////////
+
+$newPhoto.on('submit', function(event) {
+  event.preventDefault();
+
+
+  $.ajax({
+    method: 'POST',
+    url: '/api/photos-list',
+    data: $(this).serialize(),
+    success: postSuccess,
+    error: handleErrorPost
+  });
+})
+
+
+function postSuccess(json) {
+    $('.reset').val('');
+
+    $resultsPhotos.empty();
+    photosList.push(json);
+
+    renderPhotos();
+}
+
+function handleErrorPost(error) {
+  console.log('uh oh Post Error ' + error);
+  $('#results').text('Failed to Post a new photographers in photographers-list, is the server working?' + error);
+}
 
 
 

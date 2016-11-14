@@ -4,9 +4,10 @@ var mongoose = require('mongoose'),
 var PhotoSchema = new Schema({
   imageUrl: String,
   title: String,
+  photographerName: String,
   datePublished: String,
   description: String,
-  fStop: Number,
+  fStop: String,
   shutterSpeed: String,
   _creator: {type: Number, ref: 'Photographer'}
 });

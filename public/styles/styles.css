@@ -17,6 +17,9 @@ h1 h2 {
 
 }
 
+#newPhotographer {
+  max-width: 60%;
+}
 /*.fixed-width-500 {
   max-width: 200px;
 }*/

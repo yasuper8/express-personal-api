@@ -77,6 +77,7 @@ var new_photos = [
   {
     imageUrl: "http://i.imgur.com/jIF205q.jpg",
     title: "Untitled",
+    photographerName: "yasu",
     datePublished: " 2012",
     description: "Angele Island",
     fStop: 8,
@@ -85,19 +86,94 @@ var new_photos = [
   {
     imageUrl: "http://i.imgur.com/DF3gMcI.jpg",
     title: "Untitled",
+    photographerName: "yasu",
     datePublished: "2011",
     description: "San Francisco",
-    fStop: 11,
+    fStop: "11",
     shutterSpeed: "2h"
   },
   {
     imageUrl: "http://i.imgur.com/FsQioQX.jpg",
     title: "Untitled",
+    photographerName: "yasu",
     datePublished: "2016",
     description: "India",
-    fStop: 8,
+    fStop: "8",
     shutterSpeed: "1/60"
+  },
+  {
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/9/9d/Looking_across_lake_toward_mountains%2C_%22Evening%2C_McDonald_Lake%2C_Glacier_National_Park%2C%22_Montana.%2C_1933_-_1942_-_NARA_-_519861.jpg",
+    title: "Evening, McDonald Lake, Glacier National Park",
+    photographerName: "Ansel Adams",
+    datePublished: "1942",
+    description: "Image from wikimedia",
+    fStop: "N/A",
+    shutterSpeed: "1/60"
+  },
+  {
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/2/21/Adams_The_Tetons_and_the_Snake_River.jpg",
+    title: "The Tetons and the Snake River",
+    photographerName: "Ansel Adams",
+    datePublished: "1942",
+    description: "Image from wikimedia",
+    fStop: "N/A",
+    shutterSpeed: "N/A"
+  },
+  {
+    imageUrl: "http://www.ilmilitanteignoto.it/wp-content/uploads/2016/01/2004.31.80.jpg",
+    title: "Oxford Tire Pile #1, Westley, California",
+    photographerName: "Edward Burtynsky",
+    datePublished: "1999",
+    description: "Imgae from il Militante ignoto http://www.ilmilitanteignoto.it/?p=657",
+    fStop: "N/A",
+    shutterSpeed: "N/A"
+  },
+  {
+    imageUrl: "http://www.edwardburtynsky.com/site_contents/Photographs/image_galleries/Water_Gallery/H2O_COL_DEL_02_11.jpg",
+    title: "Colorado River Delta #2Near San Felipe, Baja, Mexico",
+    photographerName: "Edward Burtynsky",
+    datePublished: "2011",
+    description: "Image from his website http://www.edwardburtynsky.com/site_contents/Photographs/Water.html",
+    fStop: "N/A",
+    shutterSpeed: "N/A"
+  },
+  {
+    imageUrl: "http://www.edwardburtynsky.com/site_contents/Photographs/image_galleries/Water_Gallery/H2O_PHE_01_11.jpg",
+    title: "Salt River Pima-Maricopa Indian Reservation / ScottsdaleArizona, USA",
+    photographerName: "Edward Burtynsky",
+    datePublished: "2011",
+    description: "Image from his website http://www.edwardburtynsky.com/site_contents/Photographs/Water.html",
+    fStop: "N/A",
+    shutterSpeed: "N/A"
+  },
+  {
+    imageUrl: "http://www.blueskygallery.org/gallery/465/08_1991_conor.jpg",
+    title: "N/A",
+    photographerName: "Linda Connor",
+    datePublished: "1991",
+    description: "Image from Oregon center for the photographic arts http://www.blueskygallery.org/exhibition/linda-connor/#1",
+    fStop: "N/A",
+    shutterSpeed: "N/A"
+  },
+  {
+    imageUrl: "https://candelabooks.com/wp-content/uploads/2013/10/smjpgavalokitesvara.png",
+    title: "Continuum",
+    photographerName: "Linda Connor",
+    datePublished: "2013",
+    description: "Image from  https://candelabooks.com/linda-connor-continuum/",
+    fStop: "N/A",
+    shutterSpeed: "N/A"
+  },
+  {
+    imageUrl: "https://static1.squarespace.com/static/51694cc6e4b0f45e71c2d3a1/554f657de4b051fccebdc9a0/554f6580e4b0261b84bc3831/1431266690744/photo-minor-white-movement-studies-number-56-1949.jpg?format=1000w",
+    title: "N/A",
+    photographerName: "Minor White",
+    datePublished: "N/A",
+    description: "Image from http://neilevan.com/activity/2015/5/10/photography-study-minor-white",
+    fStop: "N/A",
+    shutterSpeed: "N/A"
   }
+
 ]
 
 
