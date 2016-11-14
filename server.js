@@ -64,6 +64,9 @@ app.get('/api/profile', function homepage(req, res) {
   });
 });
 
+///////////////////////////////////////////
+//////Photographers-list Routes////////////
+///////////////////////////////////////////
 
 
 // Get all photgraphers in photographers-list
@@ -83,7 +86,7 @@ app.get('/api/photographers-list/:id', function(req, res) {
   });
 });
 
-// create a new item in wishlist
+// create a new photographer in photographers-list
 app.post('/api/photographers-list', function(req, res) {
   var photographer = new db.Photographer(req.body);
   photographer.save(function(err, newPhotographer) {
@@ -94,6 +97,7 @@ app.post('/api/photographers-list', function(req, res) {
 //Update a single photographer in photographers-list
 app.put('/api/photographers-list/:id', function(req, res) {
   db.Photographer.findOne({_id: req.params.id}, function(err, photographer) {
+    console.log("req body name", photographer.name)
     photographer.profileImageUrl = req.body.profileImageUrl;
     photographer.name = req.body.name;
     photographer.dateOfBirth = req.body.dateOfBirth;
@@ -105,9 +109,9 @@ app.put('/api/photographers-list/:id', function(req, res) {
     photographer.photographerImage = req.body.photographerImage;
     photographer.alive = req.body.alive;
 
-  });
-  photographer.save(function(err, newPhotographer) {
-  res.json(newPhotographer);
+    photographer.save(function(err, newPhotographer) {
+    res.json(newPhotographer);
+    });
   });
 });
 
@@ -121,10 +125,65 @@ app.delete('/api/photographers-list/:id', function(req, res) {
 });
 
 
+///////////////////////
+/////Photos Route//////
+///////////////////////
+
+
+// Get all photos in photographers-list
+app.get('/api/photos-list', function (req, res) {
+  db.Photo.find(function(err, photos) {
+    if (err) {
+      return console.log('Get all photos error: ' + err);
+    }
+    res.json(photos);
+  });
+});
+
+
+//Get a single photo
+app.get('/api/photos-list/:id', function(req, res) {
+  db.Photo.findOne({_id: req.params.id}, function(err, photo) {
+    res.json(photo);
+  });
+});
+
+// create a new photo in photographers-list
+app.post('/api/photos-list', function(req, res) {
+  var photo = new db.Photo(req.body);
+  photographer.save(function(err, newPhoto) {
+    res.json(newPhoto);
+  });
+});
+
+
+//Update a single photo in photos-list
+app.put('/api/photos-list/:id', function(req, res) {
+  db.Photo.findOne({_id: req.params.id}, function(err, photo) {
+    photo.imageUrl = req.body.imageUrl;
+    photo.title = req.body.title;
+    photo.datePublished = req.body.datePublished;
+    photo.fStop = req.body.fStop;
+    photo.shutterSpeed = req.body.shutterSpeed;
+  });
+  photo.save(function(err, newPhoto) {
+  res.json(newPhoto);
+  });
+});
+
+
+// Delete a single photo in photos-list
+app.delete('/api/photos-list/:id', function(req, res) {
+  db.Photographer.findOneAndRemove({_id: req.params.id}, function(err, photographer) {
+    res.json(photos);
+  });
+});
+
+
 
 /*
- * JSON API Endpoints
- */
+* JSON API Endpoints
+*/
 
 app.get('/api', function api_index(req, res) {
   // TODO: Document all your api endpoints below
@@ -149,10 +208,6 @@ app.get('/api', function api_index(req, res) {
     ]
   })
 });
-
-///////////////////////
-/////Photos Route//////
-///////////////////////
 
 /**********
  * SERVER *

@@ -94,18 +94,21 @@
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                   <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
                 </div>
-              </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-          </div><!-- /.modal -->
+              </div>
+              <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
           </div>
+          <!-- /.modal -->
+        </div>
 
 
         <hr>
 
-        </div>
+      </div>
 
-        <!-- Create a photographer data -->
-        <!-- <form method="POST" action="/api/photographers-list" id="newPhotographer">
+      <!-- Create a photographer data -->
+      <!-- <form method="POST" action="/api/photographers-list" id="newPhotographer">
             <div class="container">
              <h2><strong>Add a photographer data to this list!</strong></h2>
                 <div class="row form">
@@ -123,60 +126,103 @@
             </div>
         </form> -->
 
-        <br>
-        <div id="results">
+      <br>
+      <div id="results">
 
-          <!-- Handlebars Template -->
-          <script id="photographers-template" type="text/x-handlebars-template">
-            <div class="row" id="photographers-list">
-              <div class='col-sx-4'>
-              </div>
-              <div class="col-xs-8 ">
-                <img src="{{profileImageUrl}}" class="profilePhoto img-responsive">
-                <p>Name: <strong>{{name}}</strong></p>
-                <!-- <p><a href="{{previewUrl}}" target="_blank" class="btn btn-sm btn-default">Preview
+        <!-- Handlebars Template Photographers -->
+        <script id="photographers-template" type="text/x-handlebars-template">
+          <div class="row" id="photographers-list">
+            <div class='col-sx-4'>
+            </div>
+            <div class="col-xs-8 ">
+              <img src="{{profileImageUrl}}" class="profilePhoto img-responsive">
+              <p>Name: <strong>{{name}}</strong></p>
+              <!-- <p><a href="{{previewUrl}}" target="_blank" class="btn btn-sm btn-default">Preview
           <span class="glyphicon glyphicon-play"></span>
                     </a></p> -->
-                <p>DOB: <strong>{{dateOfBirth}}</strong></p>
-                <p>Location: <strong>{{location}}</strong></p>
-                <p>Medium Type: <strong>{{mediumType}}</strong></p>
-                <p>Biography: <strong>{{bio}}</strong></p>
-                <p>A Related Link: <a href="{{note}}">link</a></p>
-                <p>Style of Work: <strong>{{styleOfWorks}}</strong></p>
-                <p>Living: <strong>{{alive}}</strong></p>
-                <button type="button" class="btn btn-danger deleteBtn" data-id={{_id}}>Delete</button>
-                <form method="POST" action="/api/photographers-list/:_id" id="updatePhotographer">
-                  <!-- Collapse edit info form here -->
-                  <div class="container updateform">
-                    <h2>Edit this photogrpher's info</h2>
-                    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#{{_id}}">Edit info</button>
-                    <div id="{{_id}}" class="collapse">
-                      <h3><strong>Update A Photographer Data Above</strong></h3>
-                      <div class="row form">
-                        <label for="photographer-name">Name : <input class="reset" name="name" type="text" placeholder="Photographer's Name"></label>
-                        <label for="photographer-profilePhoto">Profile image URL : <input class="reset" name="name" type="text" placeholder="Profile photo URL"></label>
-                        <label for="photographer-birth-day">Date of Birth : <input class="reset" name="dateOfBirth" type="text" placeholder="Date of Birth" ></label>
-                        <label for="photographer-location">Location : <input class="reset" name="location" type="text" placeholder="Location" ></label>
-                        <label for="medium-type">Medium Type : <input class="reset" name="mediumType" type="text" placeholder="Medium Type"></label>
-                        <label for="photographer-bio">Biography : <textarea class="reset" name="bio" type="text" placeholder="Biography" title="Enter Biography Link Here" rows="5" cols="45"></textarea></label>
-                        <label for="photographer-style">Photographer's Style : <input class="reset" name="styleOfWorks" type="text" placeholder="Style of Works"  ></label>
-                        <label for="note-citations">A Related Link : <input class="reset" name="note" type="text" placeholder="Citation Notes and links" ></label>
-                        <label for="alive-true">Alive :  <input type="radio" name="optradio">  True  <input type="radio" name="optradio">  False  </label>
-                        <!-- <input class="btn btn-default updateSubmitBtn" type="submit"></input> -->
-                        <button type="button" class="btn btn-default updateBtn" data-id={{_id}}>Update</button>
-                      </div>
+              <p>DOB: <strong>{{dateOfBirth}}</strong></p>
+              <p>Location: <strong>{{location}}</strong></p>
+              <p>Medium Type: <strong>{{mediumType}}</strong></p>
+              <p>Biography: <strong>{{bio}}</strong></p>
+              <p>A Related Link: <a href="{{note}}">link</a></p>
+              <p>Style of Work: <strong>{{styleOfWorks}}</strong></p>
+              <p>Living: <strong>{{alive}}</strong></p>
+              <button type="button" class="btn btn-danger deleteBtn" data-id={{_id}}>Delete</button>
+              <form method="PUT" action="/api/photographers-list/:_id" id="updatePhotographer">
+                <!-- Collapse edit info form here -->
+                <div class="container updateform">
+                  <h2>Edit this photogrpher's info</h2>
+                  <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#{{_id}}">Edit info</button>
+                  <div id="{{_id}}" class="collapse">
+                    <h3><strong>Update A Photographer Data Above</strong></h3>
+                    <div class="row form">
+                      <label for="photographer-profilePhoto">Profile image URL : <input class="reset" name="profileImageUrl" type="text" placeholder="Profile photo URL"></label>
+                      <label for="photographer-name">Name : <input class="reset" name="name" type="text" placeholder="Photographer's Name"></label>
+                      <label for="photographer-birth-day">Date of Birth : <input class="reset" name="dateOfBirth" type="text" placeholder="Date of Birth" ></label>
+                      <label for="photographer-location">Location : <input class="reset" name="location" type="text" placeholder="Location" ></label>
+                      <label for="medium-type">Medium Type : <input class="reset" name="mediumType" type="text" placeholder="Medium Type"></label>
+                      <label for="photographer-bio">Biography : <textarea class="reset" name="bio" type="text" placeholder="Biography" title="Enter Biography Link Here" rows="5" cols="45"></textarea></label>
+                      <label for="photographer-style">Photographer's Style : <input class="reset" name="styleOfWorks" type="text" placeholder="Style of Works"  ></label>
+                      <label for="note-citations">A Related Link : <input class="reset" name="note" type="text" placeholder="Citation Notes and links" ></label>
+                      <label for="alive-true">Alive :  <input type="radio" name="optradio">  True  <input type="radio" name="optradio">  False  </label>
+                      <!-- <input class="btn btn-default updateBtn" type="submit" data-id={{_id}}>Update</input> -->
+                      <button type="button" class="btn btn-default updateBtn" data-id={{_id}}>Update</button>
                     </div>
                   </div>
-                </form>
-                <hr>
-              </div>
+                </div>
+              </form>
+              <hr>
             </div>
-          </script>
-
-        </div>
-
+          </div>
+        </script>
       </div>
+      <!--end results target--->
+
+
+      <div id="resultsPhotos">
+
+        <!-- handlebars template photos -->
+        <script id="photos-template" type="text/x-handlebars-template">
+          <div class="row" id="photos-list">
+            <div class='col-sx-4'>
+            </div>
+            <div class="col-xs-8 ">
+              <img src="{{imageUrl}}" class="photos img-responsive">
+              <p>Title: <strong>{{title}}</strong></p>
+              <p>Date Published: <strong>{{datePublished}}</strong></p>
+              <p>Descriptions: <strong>{{description}}</strong></p>
+              <p>f-stop: <strong>{{fStop}}</strong></p>
+              <p>Shutter Speed: <strong>{{shutterSpeed}}</strong></p>
+              <button type="button" class="btn btn-danger deleteBtn" data-id={{_id}}>Delete</button>
+              <form method="POST" action="/api/photos-list/:_id" id="updatePhoto">
+                <!-- Collapse edit info form here -->
+                <div class="container updatePhotoform">
+                  <h2>Edit this photos info</h2>
+                  <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#{{_id}}">Edit info</button>
+                  <div id="{{_id}}" class="collapse">
+                    <h3><strong>Update Data for the Photo Above</strong></h3>
+                    <div class="row form">
+                      <label for="photographer-name">Title : <input class="reset" name="title" type="text" placeholder="Photo's Title"></label>
+                      <label for="photographer-profilePhoto">Image URL : <input class="reset" name="imageUrl" type="text" placeholder="Photo URL"></label>
+                      <label for="photographer-birth-day">Date Published : <input class="reset" name="datePublished" type="text" placeholder="Date Published" ></label>
+                      <label for="photographer-bio">Descriptions : <textarea class="reset" name="description" type="text" placeholder="Descriptions" title="Enter Descriptions Here" rows="5" cols="45"></textarea></label>
+                      <label for="medium-type">f-stop: <input class="reset" name="f-stop" type="text" placeholder="f-stop"></label>
+                      <label for="photographer-location">Shutter Speed : <input class="reset" name="shutterSpeed" type="text" placeholder="Shutter Speed" ></label>
+                      <!-- <input class="btn btn-default updateSubmitBtn" type="submit"></input> -->
+                      <button type="button" class="btn btn-default updateBtn" data-id={{_id}}>Update</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+              <hr>
+            </div>
+          </div>
+        </script>
+      </div> <!--end resultsPhotos--->
+
+
     </div>
+  </div>
   </div>
 
 </body>

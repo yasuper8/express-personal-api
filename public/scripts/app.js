@@ -8,8 +8,11 @@ $(document).ready(function(){
   var $name = $('#name');
   var $searchByName = $('#searchByName');
 
-  //results will be append to here
+  //Photographers results will be append to here
   var $results = $('#results');
+
+  //photos resulte will be append to hereresultsPhotos
+  var $resultsPhotos = $('#resultsPhotos');
 
   //Photograpers list
   var $photographersList = $('#photographers-list');
@@ -43,9 +46,7 @@ $(document).ready(function(){
   // helper function to render all posts to view
   // note: we empty and re-render the collection each time our post data changes
   function renderProfile () {
-  // empty existing posts from view
-  // $myProfile.empty();
-console.log('myprofiel ', myProfile)
+
   //My profile info into the template function
   var myProfileInfo = {
     name: myProfile.name,
@@ -73,9 +74,9 @@ console.log('myprofiel ', myProfile)
   }
   //end my profile
 
-//////////////////////////
+///////////////////////////////////////
 ///////////GET All Photographers////////
-/////////////////////////
+////////////////////////////////////////
 
   // compile handlebars template for photgraphers
   var photographersSource = $('#photographers-template').html();
@@ -124,9 +125,9 @@ console.log('myprofiel ', myProfile)
     }
 
 
-//////////////////////////////
-//////POST Create one/////
-////////////////////////
+//////////////////////////////////////
+//////POST Create one photographer/////
+/////////////////////////////////////
 
   $newPhotographer.on('submit', function(event) {
     event.preventDefault();
@@ -153,24 +154,44 @@ console.log('myprofiel ', myProfile)
   }
 
 
-/////////////////////////
-//////POST Update////////
-/////////////////////////
+///////////////////////////////////////
+//////POST Update a photographer////////
+///////////////////////////////////////
 
-// var photographerToUpdate = $(this).serialize();
-//
-// $results.on('click', '.updateBtn', function(event) {
-//   event.preventDefault();
-//   console.log("updateBtn clicked!");
-//
-//   $.ajax({
-//     method: 'PUT',
-//     url: "api/photographers-list/" + $(this).attr('data-id'),
-//     success: handleUpdateAPhotographer,
-//     error: handleUpdateError
+$results.on('click', '.updateBtn', function(event) {
+  event.preventDefault();
+  console.log("updateBtn clicked!");
+
+  var photographerToUpdate;
+
+  var photographerId = $(this).closest('.updateBtn').attr('data-id');
+  console.log("photographerId : ", photographerId);
+  // find the photographer to update by its id
+//   photographerToUpdate = photographersList.find(function (photographer) {
+// console.log("photographerToUpdate : ", photographerToUpdate);
+//     return photographer._id == photographerId;
 //   });
-//
-// });
+
+
+  for (var i = 0; i < photographersList.length; i++) {
+    if (photographersList[i]._id == photographerId) {
+      photographerToUpdate = photographersList[i];
+    }
+  }
+
+
+  // // var updatedPhotographer = $(this).serialize();
+  // console.log("updatedPhotographer : ", updatedPhotographer);
+
+  $.ajax({
+    method: 'PUT',
+    url: "api/photographers-list/" + $(this).attr('data-id'),
+    data: $(this).serialize(),
+    success: handleUpdateAPhotographer,
+    error: handleUpdateError
+  });
+
+});
 
 // $updatePhotographer.on('submit', function(event) {
 //   event.preventDefault();
@@ -186,12 +207,13 @@ console.log('myprofiel ', myProfile)
 // });
 
 
-// function handleUpdateAPhotographer(json) {
-//   photographersList.splice(photographers.indexOf(photographerToUpdate), 1, json);
-//   renderPhotographers();
-  // var deleteThisPhotographer = json;
-  // var photographerId = deleteThisPhotographer._id;
-  // console.log("reponse from update",json);
+function handleUpdateAPhotographer(json) {
+  // $('.reset').val('');
+  // $results.empty();
+  photographersList.splice(photographersList.indexOf(photographerToUpdate), 1, json);
+  console.log("photographersList :",photographersList)
+  renderPhotographers();
+
 
   // for (var i = 0; i < photographersList.length; i++) {
   //   if (photographersList[i]._id === photographerId) {
@@ -215,18 +237,18 @@ console.log('myprofiel ', myProfile)
   //
   //   }
   // }
-// }
-//
-// function handleUpdateError(e) {
-//   console.log('uh oh');
-//   $('#results').text('Failed to update a photographer from photographers-list, is the server working?');
-// }
+}
+
+function handleUpdateError(e) {
+  console.log('uh oh');
+  $('#results').text('Failed to update a photographer from photographers-list, is the server working?');
+}
 
 
 
-///////////////////////
-///////DELETE/////////
-////////////////////
+///////////////////////////////////////
+///////DELETE one photographer/////////
+//////////////////////////////////////
 
   $results.on('click', '.deleteBtn', function(event) {
     event.preventDefault();
@@ -280,35 +302,9 @@ console.log('myprofiel ', myProfile)
 
 
 
-/////////////////////////////////////////
-//////////GET One by id//////////
-//////////////////////////
-
-
-
-//Get all photographers
-
-function getAllPhotographers() {
-  $.ajax({
-    method: 'GET',
-    url: "api/photographers-list",
-    success: getAllPhotographers,
-    error: handleError
-  });
-
-  function getAllPhotographers(json) {
-    photographersList = json;
-    renderPhotographers();
-  }
-
-  function handleError(error) {
-    console.log('uh oh Error ' + error);
-    $('#results').text('Failed to load photographers in photographers-list, is the server working?' + error);
-  }
-
-
-}
-
+///////////////////////////////////////////
+//////////GET One photographer by id///////
+//////////////////////////////////////////
 
 
 
@@ -399,6 +395,55 @@ function getAllPhotographers() {
     console.log('uh oh');
     $('#results').text('Failed to search a photographer from photographers-list, is the server working?');
   }
+
+//////////////////////////////////
+//////GET all photos//////////////
+///////////////////////////////////
+
+
+
+// compile handlebars template for photgraphers
+  // var photosSource = $('#photos-template').html();
+  // templatePhotos = Handlebars.compile(photosSource);
+  //
+  // //Get all photogrphers in photographers-list
+  // $.ajax({
+  //   method: 'GET',
+  //   url: "api/photographers-list",
+  //   success: handleSuccessAllPhotos,
+  //   error: handleErrorPhotos
+  // });
+  //
+  // function renderPhotos() {
+  //   $results.empty();
+  //   for(var i = 0; i < photosList.length; i++) {
+  //     var photosInfo = {
+  //       imageUrl: photosList[i].imageUrl,
+  //       title: photosList[i].title,
+  //       datePublished: photosList[i].datePublished,
+  //       description: photosList[i].description,
+  //       fStop: photosList[i].fStop,
+  //       shutterSpeed: photosList[i].shutterSpeed,
+  //       _id: photosList[i]._id
+  //     }
+  //     var photosHtml = templatePhotos(photosInfo);
+  //
+  //     // append html to the view
+  //     $resultsPhotos.append(photosHtml);
+  //   }
+  //
+  // }
+  //
+  //
+  // function handleSuccessAllPhotos(json) {
+  //   photosList = json;
+  //   renderPhotos();
+  // }
+  //
+  // function handleErrorPhotos(error) {
+  //   console.log('uh oh Error ' + error);
+  //   $('#results').text('Failed to load photos in photographers-list, is the server working?' + error);
+  // }
 
 
 
