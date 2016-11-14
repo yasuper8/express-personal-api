@@ -1,7 +1,7 @@
 body {
-  color: #333;
-  font-family: Helvetica, Arial, sans-serif;
-  background-color: #CBEFB6; /* Sanity Check! */
+  color: #235789;
+  font-family: 'Lato', sans-serif;
+  background-color: #FDFFFC; /* Sanity Check! */
 }
 
 h1 h2 {
@@ -11,15 +11,29 @@ h1 h2 {
 
 #yasu-headshot {
   width: 200px;
-  border-radius: 30px;
+  border-radius: 500px;
   display: block;
   margin: 0 auto;
 
 }
 
-#newPhotographer {
-  max-width: 60%;
+hr {
+  border: 0;
+  border-bottom: 2px solid #F1D302;
 }
+
+.profilePhoto {
+  max-width: 15em;
+  border-radius: 20px;
+}
+
+#photographers-list {
+  padding-left: 12em;
+}
+
+/*#newPhotographer {
+  max-width: 60%;
+}*/
 /*.fixed-width-500 {
   max-width: 200px;
 }*/
