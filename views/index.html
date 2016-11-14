@@ -244,7 +244,7 @@
         <div class="col-md-6">
           <h1 class="text-center">Photographs</h1>
           <hr>
-          <div  id="resultsPhotos">
+          <div id="resultsPhotos">
             <!-- handlebars template photos -->
             <script id="photos-template" type="text/x-handlebars-template">
               <div class="row" id="photos-list">
@@ -267,18 +267,18 @@
                       <div id="{{_id}}" class="collapse">
                         <h3><strong>Update Data for the Photo Above</strong></h3>
                         <div class="container col-md-12">
-                        <div class="row form">
-                          <label for="photogTitle">Title : <input class="reset" name="title" type="text" placeholder="Photo's Title"></label>
-                          <label for="photographer-name">Photographer : <input class="reset" name="photographerName" type="text" placeholder="PhotographerName"></label>
-                          <label for="photoUrl">Image URL : <input class="reset" name="imageUrl" type="text" placeholder="Photo URL"></label>
-                          <label for="photoDatepublished">Date Published : <input class="reset" name="datePublished" type="text" placeholder="Date Published" ></label>
-                          <label for="photoDescription">Descriptions : <textarea class="reset" name="description" type="text" placeholder="Descriptions" title="Enter Descriptions Here" rows="5" cols="45"></textarea></label>
-                          <label for="fStop">f-stop: <input class="reset" name="f-stop" type="text" placeholder="f-stop"></label>
-                          <label for="shutterSpeed">Shutter Speed : <input class="reset" name="shutterSpeed" type="text" placeholder="Shutter Speed" ></label>
-                          <!-- <input class="btn btn-default updateSubmitBtn" type="submit"></input> -->
-                          <button type="button" class="btn btn-default updateBtn" data-id={{_id}}>Update</button>
+                          <div class="row form">
+                            <label for="photogTitle">Title : <input class="reset" name="title" type="text" placeholder="Photo's Title"></label>
+                            <label for="photographer-name">Photographer : <input class="reset" name="photographerName" type="text" placeholder="PhotographerName"></label>
+                            <label for="photoUrl">Image URL : <input class="reset" name="imageUrl" type="text" placeholder="Photo URL"></label>
+                            <label for="photoDatepublished">Date Published : <input class="reset" name="datePublished" type="text" placeholder="Date Published" ></label>
+                            <label for="photoDescription">Descriptions : <textarea class="reset" name="description" type="text" placeholder="Descriptions" title="Enter Descriptions Here" rows="5" cols="45"></textarea></label>
+                            <label for="fStop">f-stop: <input class="reset" name="f-stop" type="text" placeholder="f-stop"></label>
+                            <label for="shutterSpeed">Shutter Speed : <input class="reset" name="shutterSpeed" type="text" placeholder="Shutter Speed" ></label>
+                            <!-- <input class="btn btn-default updateSubmitBtn" type="submit"></input> -->
+                            <button type="button" class="btn btn-default updateBtn" data-id={{_id}}>Update</button>
+                          </div>
                         </div>
-                      </div>
                       </div>
                     </div>
                   </form>
